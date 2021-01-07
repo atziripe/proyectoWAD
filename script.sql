@@ -32,6 +32,7 @@ insert into pelicula values(3,1,'El precio de la verdad: Dark Waters','Un abogad
 insert into pelicula values(4,4,'Luces de la ciudad','Un vagabundo puede resolverle los problemas económicos a su amada, una ciega, gracias a su amistad con un magnate.','B', 1931, 87,'Charles Chaplin', 0, 0);
 insert into pelicula values(5,5,'Dame el poder','Historia de la banda Molotov y su significado más amplio para la política mexicana explicando cómo la música rock mexicana siempre ha tenido una relación bastante ambigua con el gobierno mexicano y la sociedad desde finales de la década de 1950.','B', 2012, 101,'	Olallo Rubio', 0, 0);
 
+insert into pelicula values(1,3,'Por otro puñado de dolares ','Cazarecompensas','B', 1964, 99,'Sergio Leone', 0, 0);
   
 CREATE TABLE Usuario (
   idUsuario serial primary key,
