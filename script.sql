@@ -43,7 +43,7 @@ CREATE TABLE Usuario (
   nombreUsuario varchar(20) NOT NULL,
   claveUsuario varchar(20) NOT NULL,
   tipoUsuario varchar(1),
-  imagen varchar(50) NOT NULL
+  imagen varchar(50)
 );
 
 insert into Usuario values(1, 'Fernando', 'Hernández', 'Escobedo', 'weas.wad.2020@gmail.com', 'SrR', '12345>', 'A');
