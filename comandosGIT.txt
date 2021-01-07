@@ -1,4 +1,10 @@
-git pull origin main
-git add .
-git commit -m "comentario"
-git push origin main
+1. clonar repositorio
+ git clone 'https://github.com/atziripe/proyectoWAD.git'
+2. hacer un pull (mantener el repositorio actualizado)
+ git pull origin main
+3. una vez que se hicieron cambios en la carpeta de git desde tu compu, hacer una add
+ git add .
+4. Hacer commit 
+ git commit -m "Tu comentario"
+5. Push
+ git push origin main
