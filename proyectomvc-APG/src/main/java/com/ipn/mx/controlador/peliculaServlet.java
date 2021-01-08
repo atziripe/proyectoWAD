@@ -52,19 +52,19 @@ public class peliculaServlet extends HttpServlet {
             listaDeProductos(request, response);
         } else {
             if (accion.equals("nuevo")) {
-                agregarProducto(request, response);
+                agregarPelicula(request, response);
             } else {
                 if (accion.equals("eliminar")) {
-                    eliminarProducto(request, response);
+                    eliminarPelicula(request, response);
                 } else {
                     if (accion.equals("actualizar")) {
-                        actualizarProducto(request, response);
+                        actualizarPelicula(request, response);
                     } else {
                         if (accion.equals("guardar")) {
-                            almacenarProducto(request, response);
+                            almacenarPelicula(request, response);
                         } else {
                             if (accion.equals("ver")) {
-                                mostrarProducto(request, response);
+                                mostrarPelicula(request, response);
                             } else {
                                 if (accion.equals("grafica")) {
                                     graficar(request, response);
@@ -126,92 +126,98 @@ private void listaDeProductos(HttpServletRequest request, HttpServletResponse re
         try {
             List lista = dao.readAll();
             request.setAttribute("listaDeProductos", lista);
-            RequestDispatcher rd = request.getRequestDispatcher("listaProductos.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("listaPelicula.jsp");
             rd.forward(request,response);
         } catch (SQLException | ServletException | IOException ex) {
-            Logger.getLogger(productoServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private void agregarProducto(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher rd = request.getRequestDispatcher("productoForm.jsp");
+    private void agregarPelicula(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher rd = request.getRequestDispatcher("peliculaForm.jsp");
         try {
             rd.forward(request, response);
         } catch (ServletException | IOException ex) {
-            Logger.getLogger(productoServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private void eliminarProducto(HttpServletRequest request, HttpServletResponse response) {
+    private void eliminarPelicula(HttpServletRequest request, HttpServletResponse response) {
         PeliculaDAO dao = new PeliculaDAO();
         PeliculaDTO dto = new PeliculaDTO();
-        dto.getEntidad().setIdProducto(Integer.parseInt(request.getParameter("id")));
-        RequestDispatcher rd = request.getRequestDispatcher("categoriaServlet?accion=listaDeCategorias");
+        dto.getEntidad().setIdPelicula(Integer.parseInt(request.getParameter("id")));
+        RequestDispatcher rd = request.getRequestDispatcher("generoServlet?accion=listaDeGeneros");
         try {
             dao.delete(dto);
             rd.forward(request, response);
         } catch (SQLException | ServletException | IOException ex) {
-            Logger.getLogger(productoServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }     
     }
 
-    private void actualizarProducto(HttpServletRequest request, HttpServletResponse response) {
+    private void actualizarPelicula(HttpServletRequest request, HttpServletResponse response) {
         PeliculaDAO dao = new PeliculaDAO();
         PeliculaDTO dto = new PeliculaDTO();
-        dto.getEntidad().setIdProducto(Integer.parseInt(request.getParameter("id")));
+        dto.getEntidad().setIdPelicula(Integer.parseInt(request.getParameter("id")));
         try {
             dto = dao.read(dto);
-            request.setAttribute("producto",dto);
-            RequestDispatcher vista = request.getRequestDispatcher("productoForm.jsp");
+            request.setAttribute("pelicula",dto);
+            RequestDispatcher vista = request.getRequestDispatcher("peliculaForm.jsp");
             vista.forward(request, response);
         } catch (SQLException | ServletException | IOException ex) {
-            Logger.getLogger(productoServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private void almacenarProducto(HttpServletRequest request, HttpServletResponse response) {
+    private void almacenarPelicula(HttpServletRequest request, HttpServletResponse response) {
         PeliculaDAO dao = new PeliculaDAO();
         PeliculaDTO dto = new PeliculaDTO(); 
-        RequestDispatcher rd = request.getRequestDispatcher("categoriaServlet?accion=listaDeCategorias");
+        RequestDispatcher rd = request.getRequestDispatcher("generoServlet?accion=listaDeGeneros");
          if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
-            dto.getEntidad().setNombrePelicula(request.getParameter("txtNombreProducto"));
-            dto.getEntidad().setDescripcionPelicula(request.getParameter("txtDescripcionProducto"));
-            dto.getEntidad().setPrecio(Float.parseFloat(request.getParameter("txtPrecio")));
-            dto.getEntidad().setExistencia(Integer.parseInt(request.getParameter("txtExistencia")));
-            dto.getEntidad().setIdGenero(Integer.parseInt(request.getParameter("txtIdCategoria")));
+            dto.getEntidad().setIdGenero(Integer.parseInt(request.getParameter("txtIdGenero")));
+            dto.getEntidad().setSinopsis(request.getParameter("txtSinopsisPelicula"));
+            dto.getEntidad().setClasificacion(request.getParameter("txtClasificacion"));
+            dto.getEntidad().setAnio(Integer.parseInt(request.getParameter("txtAnio")));
+            dto.getEntidad().setDuracion(Float.parseFloat(request.getParameter("txtDuracion")));
+            dto.getEntidad().setDirector(request.getParameter("Director"));
+            dto.getEntidad().setVotosPositivos(Integer.parseInt(request.getParameter("votosPositivos")));
+            dto.getEntidad().setVotosNegativos(Integer.parseInt(request.getParameter("votosNegativos")));
             try {
                 dao.create(dto);
                 rd.forward(request, response);
             } catch (SQLException | ServletException | IOException ex) {
-                Logger.getLogger(productoServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
          }else{
-            dto.getEntidad().setIdProducto(Integer.parseInt(request.getParameter("id")));
-            dto.getEntidad().setNombrePelicula(request.getParameter("txtNombreProducto"));
-            dto.getEntidad().setDescripcionPelicula(request.getParameter("txtDescripcionProducto"));
-            dto.getEntidad().setPrecio(Float.parseFloat(request.getParameter("txtPrecio")));
-            dto.getEntidad().setExistencia(Integer.parseInt(request.getParameter("txtExistencia")));
-            dto.getEntidad().setIdGenero(Integer.parseInt(request.getParameter("txtIdCategoria")));
+            dto.getEntidad().setIdPelicula(Integer.parseInt(request.getParameter("id")));
+            dto.getEntidad().setIdGenero(Integer.parseInt(request.getParameter("txtIdGenero")));
+            dto.getEntidad().setSinopsis(request.getParameter("txtSinopsisPelicula"));
+            dto.getEntidad().setClasificacion(request.getParameter("txtClasificacion"));
+            dto.getEntidad().setAnio(Integer.parseInt(request.getParameter("txtAnio")));
+            dto.getEntidad().setDuracion(Float.parseFloat(request.getParameter("txtDuracion")));
+            dto.getEntidad().setDirector(request.getParameter("Director"));
+            dto.getEntidad().setVotosPositivos(Integer.parseInt(request.getParameter("votosPositivos")));
+            dto.getEntidad().setVotosNegativos(Integer.parseInt(request.getParameter("votosNegativos")));
             try {
                 dao.update(dto);
                 rd.forward(request, response);
             } catch (SQLException | ServletException | IOException ex) {
-                Logger.getLogger(productoServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
          }
     }
 
-    private void mostrarProducto(HttpServletRequest request, HttpServletResponse response) {    
+    private void mostrarPelicula(HttpServletRequest request, HttpServletResponse response) {    
         PeliculaDAO dao = new PeliculaDAO();
         PeliculaDTO dto = new PeliculaDTO();
         RequestDispatcher rd = request.getRequestDispatcher("verProducto.jsp");
-        dto.getEntidad().setIdProducto(Integer.parseInt(request.getParameter("id")));
+        dto.getEntidad().setIdPelicula(Integer.parseInt(request.getParameter("id")));
         try {
             dto = dao.read(dto);
             request.setAttribute("product",dto);
             rd.forward(request, response);
         } catch (SQLException | ServletException | IOException ex) {
-            Logger.getLogger(productoServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

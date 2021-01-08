@@ -1,0 +1,18 @@
+<<<<<<< HEAD
+=======
+com\ipn\mx\modelo\entidades\Usuario.class
+com\ipn\mx\modelo\entidades\Pelicula.class
+com\ipn\mx\controlador\peliculaServlet.class
+com\ipn\mx\modelo\dao\GraficaDAO.class
+com\ipn\mx\modelo\dao\UsuarioDAO.class
+com\ipn\mx\modelo\dto\GeneroDTO.class
+com\ipn\mx\modelo\dto\GraficaDTO.class
+com\ipn\mx\modelo\dto\UsuarioDTO.class
+com\ipn\mx\modelo\dao\PeliculaDAO.class
+com\ipn\mx\utilerias\EnviarEmail.class
+com\ipn\mx\controlador\usuarioServlet.class
+com\ipn\mx\modelo\dao\GeneroDAO.class
+com\ipn\mx\modelo\entidades\Genero.class
+com\ipn\mx\modelo\dto\PeliculaDTO.class
+com\ipn\mx\controlador\generoServlet.class
+>>>>>>> 345d23a49bdf33c91f1e6b72b5a90bd43b7ec886
