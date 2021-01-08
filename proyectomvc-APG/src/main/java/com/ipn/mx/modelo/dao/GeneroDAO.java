@@ -46,7 +46,7 @@ public class GeneroDAO {
             Class.forName(driver);
             con = DriverManager.getConnection(url, usr, pwd);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GeneroDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return con;
     }
@@ -105,7 +105,7 @@ public class GeneroDAO {
         }
     }
 
-    public CategoriaDTO read(GeneroDTO dto) throws SQLException {
+    public GeneroDTO read(GeneroDTO dto) throws SQLException {
         obtenerConexion();
         CallableStatement cs = null;
         ResultSet rs = null;
@@ -164,8 +164,8 @@ public class GeneroDAO {
         while (rs.next()) {
             GeneroDTO dto = new GeneroDTO();
             dto.getEntidad().setIdGenero(rs.getInt("idGenero"));
-            dto.getEntidad().setNombreCategoria(rs.getString("nombreGenero"));
-            dto.getEntidad().setDescripcionCategoria(rs.getString("descripcionGenero"));
+            dto.getEntidad().setNombreGenero(rs.getString("nombreGenero"));
+            dto.getEntidad().setDescripcionGenero(rs.getString("descripcionGenero"));
             resultados.add(dto);
         }
         return resultados;
@@ -173,8 +173,8 @@ public class GeneroDAO {
 
     public static void main(String[] args) {
 
-        CategoriaDAO dao = new CategoriaDAO();
-        CategoriaDTO dto = new CategoriaDTO();
+        GeneroDAO dao = new GeneroDAO();
+        GeneroDTO dto = new GeneroDTO();
 
         try {
             List res = dao.readAll();

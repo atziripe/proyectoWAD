@@ -29,16 +29,16 @@
         <!-- Barra de navegación-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="inicioAdmin.jsp">Producto por Categoría</a>
+                <a class="navbar-brand js-scroll-trigger" href="inicioAdmin.jsp">Pelicula por Categoría</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="categoriaServlet?accion=listaDeCategorias">Lista de Categorías</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="productoServlet?accion=grafica&id=${cat.entidad.idCategoria}">Ver gráficas</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="productoServlet?accion=reporte">Reporte PDF</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="productoServlet?accion=nuevo">Nuevo Producto</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="generoServlet?accion=listaDeGeneros">Lista de Categorías</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="peliculaServlet?accion=grafica&id=${cat.entidad.idGenero}">Ver gráficas</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="peliculaServlet?accion=reporte">Reporte PDF</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="peliculaServlet?accion=nuevo">Nuevo Pelicula</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=usuarios">Usuarios</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=actualizar&id=${sessionScope.user.entidad.idUsuario}"><i
                                     class="fas fa-2x fa-user-edit mb-4"></i>${sessionScope.user.entidad.nombreUsuario}</a></li>
@@ -48,27 +48,27 @@
                 </div>
             </div>
         </nav>
-        <!-- Datos Categoria-->
+        <!-- Datos Genero-->
         <section class="page-section bg-primary" id="Category">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
-                        <h2 class="text-white mt-0">Categoria <c:out value='${cat.entidad.nombreCategoria}'/></h2>
+                        <h2 class="text-white mt-0">Genero <c:out value='${cat.entidad.nombreGenero}'/></h2>
                         <hr class="divider light my-4" />
                         <div class="card bg-primary">
                             <div class="card-header">
-                                <h1>Datos de la categoria</h1>
+                                <h1>Datos de la genero</h1>
                             </div>
                             <div class="card-body">
                                 <ul class="list-group">
-                                    <li class="list-group-item"><c:out value='${cat.entidad.idCategoria}'/></li>
-                                    <li class="list-group-item"><c:out value='${cat.entidad.nombreCategoria}'/></li>
-                                    <li class="list-group-item"><c:out value='${cat.entidad.descripcionCategoria}'/></li>
+                                    <li class="list-group-item"><c:out value='${cat.entidad.idGenero}'/></li>
+                                    <li class="list-group-item"><c:out value='${cat.entidad.nombreGenero}'/></li>
+                                    <li class="list-group-item"><c:out value='${cat.entidad.descripcionGenero}'/></li>
                                 </ul>
                             </div>
                         </div>
-                        <a class="btn btn-light btn-xl js-scroll-trigger" href="productoServlet?accion=grafica&id=${cat.entidad.idCategoria}">Ver gráficas</a>
-                        <a class="btn btn-light btn-xl js-scroll-trigger" href="productoServlet?accion=reporte">Reporte PDF</a>
+                        <a class="btn btn-light btn-xl js-scroll-trigger" href="peliculaServlet?accion=grafica&id=${cat.entidad.idGenero}">Ver gráficas</a>
+                        <a class="btn btn-light btn-xl js-scroll-trigger" href="peliculaServlet?accion=reporte">Reporte PDF</a>
                     </div>
                 </div>
             </div>
@@ -77,14 +77,14 @@
         <!-- Tabla producots-->
         <section class="page-section bg-dark text-white">
             <div class="container text-center">
-                <h2 class="mb-4">Productos de esta categoria</h2>
+                <h2 class="mb-4">Peliculas de esta genero</h2>
 
                 <hr class="divider my-4" />
                 <br>
                 <table class="table table-hover text-light">
                         <thead>
                             <tr>
-                                <th>ID Producto</th>
+                                <th>ID Pelicula</th>
                                 <th>Nombre</th>
                                 <th>Descripcion</th>
                                 <th>Precio</th>
@@ -98,16 +98,16 @@
                                 <tr>
                                     <td>
                                         <a class="btn btn-light btn-xs"
-                                           href="productoServlet?accion=ver&id=<c:out value='${dto.entidad.idProducto}'/>"
+                                           href="peliculaServlet?accion=ver&id=<c:out value='${dto.entidad.idPelicula}'/>"
                                            >
-                                            <c:out value="${dto.entidad.idProducto}"/>
+                                            <c:out value="${dto.entidad.idPelicula}"/>
                                         </a>
                                     </td>
                                     <td>
-                                        <c:out value="${dto.entidad.nombreProducto}"/>
+                                        <c:out value="${dto.entidad.nombrePelicula}"/>
                                     </td>
                                     <td>
-                                        <c:out value="${dto.entidad.descripcionProducto}"/>
+                                        <c:out value="${dto.entidad.descripcionPelicula}"/>
                                     </td>
                                     <td>
                                         <c:out value="${dto.entidad.precio}"/>
@@ -117,14 +117,14 @@
                                     </td>
                                     <td>
                                         <a 
-                                            href="productoServlet?accion=actualizar&id=<c:out value='${dto.entidad.idProducto}'/>"
+                                            href="peliculaServlet?accion=actualizar&id=<c:out value='${dto.entidad.idPelicula}'/>"
                                             >
                                             <i class="fas fa-2x fa-pencil-alt text-success mb-4"></i>
                                         </a>
                                     </td>
                                     <td>
                                         <a 
-                                            href="productoServlet?accion=eliminar&id=<c:out value='${dto.entidad.idProducto}'/>"
+                                            href="peliculaServlet?accion=eliminar&id=<c:out value='${dto.entidad.idPelicula}'/>"
                                             >
                                             <i class="fas fa-2x fa-trash-alt text-primary mb-4"></i>
                                         </a>

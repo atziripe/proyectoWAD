@@ -58,7 +58,7 @@
                     <hr class="divider my-4" />
                 </div>
                 <div class="col-lg-8 align-self-baseline">
-                    <p class="text-white-75 font-weight-light mb-5">Comienza a gestionar Categorías y productos</p>
+                    <p class="text-white-75 font-weight-light mb-5">Comienza a gestionar Peliculas</p>
                     <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Conoce más</a>
                 </div>
             </div>
@@ -71,31 +71,31 @@
                 <div class="col-lg-8 text-center">
                     <h2 class="text-white mt-0">Interfaz de administrador</h2>
                     <hr class="divider light my-4" />
-                    <p class="text-white-50 mb-4">Hay dos rubros para gestionar, productos y usuarios.</p>
-                    <a class="btn btn-light btn-xl js-scroll-trigger" href="#categorias">Productos</a>
+                    <p class="text-white-50 mb-4">Hay dos rubros para gestionar, peliculas y usuarios.</p>
+                    <a class="btn btn-light btn-xl js-scroll-trigger" href="#generos">Peliculas</a>
                     <a class="btn btn-light btn-xl js-scroll-trigger" href="#usuarios">Usuarios</a>
                 </div>
             </div>
         </div>
     </section>
     <!-- Categorias-->
-    <section class="page-section" id="categorias">
+    <section class="page-section" id="generos">
         <div class="container">
-            <h2 class="text-center mt-0">Acciones en productos</h2>
+            <h2 class="text-center mt-0">Acciones en peliculas</h2>
             <hr class="divider my-4" />
             <div class="row">
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="mt-5">
                         <i class="fas fa-4x fa-plus text-primary mb-4"></i>
                         <h3 class="h4 mb-2">Nuevo</h3>
-                        <p class="text-muted mb-0">Crear una categoría o un producto nuevo</p>
+                        <p class="text-muted mb-0">Crear un genero o una pelicula nueva</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="mt-5">
                         <i class="fas fa-4x fa-eye text-primary mb-4"></i>
                         <h3 class="h4 mb-2">Consulta</h3>
-                        <p class="text-muted mb-0">Consultar categorias y productos existentes.</p>
+                        <p class="text-muted mb-0">Consultar generos y peliculas existentes.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
@@ -109,7 +109,7 @@
                     <div class="mt-5">
                         <i class="fas fa-4x fa-trash-alt text-primary mb-4"></i>
                         <h3 class="h4 mb-2">Eliminación</h3>
-                        <p class="text-muted mb-0">Eliminar productos y/o categorías</p>
+                        <p class="text-muted mb-0">Eliminar peliculas y/o generos</p>
                     </div>
                 </div>
             </div>

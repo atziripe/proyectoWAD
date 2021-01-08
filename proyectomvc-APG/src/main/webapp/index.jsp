@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Practica 2 WAD</title>
+        <title>Art movies</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -29,7 +29,7 @@
         <!-- Barra de navegación-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">Producto por Categoría</a>
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">Art movies</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
@@ -44,11 +44,11 @@
             <div class="container h-100">
                 <div class="row h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-10 align-self-end">
-                        <h1 class="text-uppercase text-white font-weight-bold">Manera práctica y sencilla de manejar productos</h1>
+                        <h1 class="text-uppercase text-white font-weight-bold">Bienvenido a Art Movies</h1>
                         <hr class="divider my-4" />
                     </div>
                     <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 font-weight-light mb-5">Este proyecto te ayudará a encontrar el producto que necesitas de una manera muy sencilla y rápida</p>
+                        <p class="text-white-75 font-weight-light mb-5">Este proyecto te ayudará a encontrar la pelicula que deseas de una manera muy sencilla y rápida</p>
                         <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Conoce más</a>
                     </div>
                 </div>
@@ -61,8 +61,8 @@
                     <div class="col-lg-8 text-center">
                         <h2 class="text-white mt-0">¡Tenemos lo que necesitas!</h2>
                         <hr class="divider light my-4" />
-                        <p class="text-white-50 mb-4">Proyecto de Web Application Development del 2do parcial, el cual tiene la funciones CRUD para productos y organizarlos por categoria, contiene gráficas de los productos, reportes en PDF y envío de emails.</p>
-                        <a class="btn btn-light btn-xl js-scroll-trigger" href="#portfolio">Ver categorías</a>
+                        <p class="text-white-50 mb-4">Proyecto de Web Application Development, el cual tiene la funciones CRUD para peliculas y organizarlos por categoria, contiene gráficas de los peliculas, reportes en PDF y envío de emails.</p>
+                        <a class="btn btn-light btn-xl js-scroll-trigger" href="#portfolio">Ver géneros</a>
                     </div>
                 </div>
             </div>
@@ -77,14 +77,14 @@
                         <div class="mt-5">
                             <i class="fas fa-4x fa-users text-primary mb-4"></i>
                             <h3 class="h4 mb-2">Manejo de sesiones</h3>
-                            <p class="text-muted mb-0">Solo los usuarios del sistema podrán realizar las acciones de CRUD sobre los productos.</p>
+                            <p class="text-muted mb-0">Solo los usuarios del sistema podrán realizar las acciones de CRUD sobre los peliculas.</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 text-center">
                         <div class="mt-5">
                             <i class="fas fa-4x fa-tasks text-primary mb-4"></i>
                             <h3 class="h4 mb-2">CRUD</h3>
-                            <p class="text-muted mb-0">Create, Read, Update y Delete en los productos en la base de datos.</p>
+                            <p class="text-muted mb-0">Create, Read, Update y Delete en las peliculas en la base de datos.</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 text-center">

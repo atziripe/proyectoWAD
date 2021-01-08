@@ -288,7 +288,7 @@ public class usuarioServlet extends HttpServlet {
             sos.flush();
             sos.close();
         } catch (IOException | JRException ex) {
-            Logger.getLogger(categoriaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(usuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -306,7 +306,7 @@ public class usuarioServlet extends HttpServlet {
             sos.flush();
             sos.close();
         } catch (IOException | JRException ex) {
-            Logger.getLogger(categoriaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(usuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

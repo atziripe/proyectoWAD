@@ -1,5 +1,5 @@
 <%-- 
-    Document   : graficaCategoria
+    Document   : graficaGenero
     Created on : 12 dic. 2020, 21:25:26
     Author     : Atziri Perez
 --%>
@@ -12,7 +12,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <title>Graficas Categoria</title>
+        <title>Graficas Genero</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -31,14 +31,14 @@
         <!-- Barra de navegación-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="inicioAdmin.jsp">Producto por Categoría</a>
+                <a class="navbar-brand js-scroll-trigger" href="inicioAdmin.jsp">Pelicula por Género</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                         aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="categoriaServlet?accion=listaDeCategorias">Categorias</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="productoServlet?accion=nuevo">Nuevo producto</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="categoriaServlet?accion=listaDeGeneros">Generos</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="productoServlet?accion=nuevo">Nueva pelicula</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=usuarios">Usuarios</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=actualizar&id=${sessionScope.user.entidad.idUsuario}"><i
                                     class="fas fa-2x fa-user-edit mb-4"></i>${sessionScope.user.entidad.nombreUsuario}</a></li>
@@ -51,8 +51,8 @@
         <!-- Grafica elementos por categoria-->
         <section class="page-section bg-dark text-white">
             <div class="container text-center">             
-                <h1 class="mb-4">Categoria <c:out value='${category.entidad.nombreCategoria}'/></h1>
-                <h2 class="mb-4">Existencia por producto</h2>
+                <h1 class="mb-4">Genero <c:out value='${category.entidad.nombreGenero}'/></h1>
+                <h2 class="mb-4">Existencia por pelicula</h2>
 
                 <hr class="divider my-4" />
                 <br>
@@ -63,7 +63,7 @@
         <!-- Grafica precio promedio por categoria-->
         <section class="page-section bg-light">
             <div class="container text-center">
-                <h2 class="mb-4">Precio promedio por categoría</h2>
+                <h2 class="mb-4">Precio promedio por género</h2>
 
                 <hr class="divider my-4" />
                 <br>

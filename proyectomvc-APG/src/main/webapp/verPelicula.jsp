@@ -1,6 +1,6 @@
 <%-- 
-    Document   : categoriaForm
-    Created on : 25 nov. 2020, 15:31:40
+    Document   : ver
+    Created on : 26 nov. 2020, 15:30:58
     Author     : Atziri Perez
 --%>
 <%@page session='true'%>
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Agregar categoria</title>
+        <title>Ver Pelicula</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -18,10 +18,10 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
-            rel="stylesheet" type="text/css" />
+              rel="stylesheet" type="text/css" />
         <!-- Third party plugin CSS-->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
-            rel="stylesheet" />
+              rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
@@ -29,13 +29,15 @@
         <!-- Barra de navegación-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="inicioAdmin.jsp">Producto por Categoría</a>
+                <a class="navbar-brand js-scroll-trigger" href="inicioAdmin.jsp">Pelicula por Categoría</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="categoriaServlet?accion=listaDeCategorias">Categorias</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="categoriaServlet?accion=listaDeGeneros">Categorías</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="peliculaServlet?accion=reporte">Reporte PDF</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="peliculaServlet?accion=nuevo">Nuevo Pelicula</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=usuarios">Usuarios</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=actualizar&id=${sessionScope.user.entidad.idUsuario}"><i
                                     class="fas fa-2x fa-user-edit mb-4"></i>${sessionScope.user.entidad.nombreUsuario}</a></li>
@@ -45,38 +47,38 @@
                 </div>
             </div>
         </nav>
-
-        <!-- Form-->
-        <section class="page-section bg-dark text-white">
-            <div class="container text-center">
-                <h2 class="mb-4">Datos de la categoria</h2>
-                <hr class="divider my-4" />
-                <br>
-                <form action="categoriaServlet?accion=guardar" method= "POST" name="frmCategoria" id="frmCategoria">
-                    <input type="hidden" name="id" id="id" value="<c:out value='${categoria.entidad.idCategoria}'/>"/>
-                    <div class="form-group row">
-                        <label for="txtNombreCategoria" class="col-sm-2 col-form-label">Nombre categoría</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="txtNombreCategoria" id="txtNombreCategoria" maxlength="50" required="required" placeholder="Nombre de la Categoria" class="form-control" value="<c:out value='${categoria.entidad.nombreCategoria}'/>"/>
+        <!-- Datos Genero-->
+        <section class="page-section bg-dark" id="Gender">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="text-white mt-0">Pelicula <c:out value='${product.entidad.nombrePelicula}'/></h2>
+                        <hr class="divider light my-4" />
+                        <div class="card bg-dark">
+                            <div class="card-header text-light">
+                                <h1>Datos del pelicula</h1>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">ID: <c:out value='${product.entidad.idPelicula}'/></li>
+                                    <li class="list-group-item">Nombre: <c:out value='${product.entidad.nombrePelicula}'/></li>
+                                    <li class="list-group-item">Descripción: <c:out value='${product.entidad.descripcionPelicula}'/></li>
+                                    <li class="list-group-item">Precio: $<c:out value='${product.entidad.precio}'/></li>
+                                    <li class="list-group-item">Existencia: <c:out value='${product.entidad.existencia}'/></li>
+                                    <li class="list-group-item">ID de categoria a la que pertenece: <c:out value='${product.entidad.idGenero}'/></li>
+                                </ul>                               
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="txtxDescipcionCategoria" class="col-sm-2 col-form-label">Descripcion categoria</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="txtDescripcionCategoria" id="txtDescripcionCategoria" maxlength="250" required="required" placeholder="Descripcion de la Categoria" class="form-control" value="<c:out value='${categoria.entidad.descripcionCategoria}'/>"/>
-                        </div>
-                    </div>
-                    <div class="row h-100 align-items-center justify-content-center text-center">
-                        <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="Registrar Categoria"/>
-                    </div>
-                </form>
+                </div>
             </div>
         </section>
-    
+
+
         <!-- Pie de página-->
         <footer class="bg-light py-5">
 
-            <div class="small text-center text-muted">Copyright © 2020 - Start Bootstrap</div>
+                <div class="small text-center text-muted">Copyright © 2020 - Start Bootstrap</div>
 
         </footer>
         <!-- Bootstrap core JS-->
@@ -89,4 +91,3 @@
         <script src="js/scripts.js"></script>
     </body>
 </html>
-
