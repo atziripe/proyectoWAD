@@ -30,7 +30,7 @@ public class Pelicula implements Serializable{
     private int anio;
     private float duracion;
     private String director;
-    private int votosPositivo;
+    private int votosPositivos;
     private int votosNegativos;
     private String link;
 }

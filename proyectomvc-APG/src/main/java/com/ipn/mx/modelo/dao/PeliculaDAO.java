@@ -1,7 +1,6 @@
 package com.ipn.mx.modelo.dao;
 
 import com.ipn.mx.modelo.dto.PeliculaDTO;
-import com.ipn.mx.modelo.entidades.Categoria;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,7 +24,7 @@ public class PeliculaDAO {
     private Connection con;
     
     public Connection obtenerConexion(){
-           String usr = "postgres";
+        String usr = "postgres";
         String pwd = "1234";
         String driver = "org.postgresql.Driver";
         String url ="jdbc:postgresql://localhost:5432/proyectoWAD";    
@@ -55,17 +54,17 @@ public class PeliculaDAO {
         obtenerConexion();
         CallableStatement cs = null;
        try{
-           cs = con.prepareCall(SQL_INSERT);
-           cs.setString(1, dto.getEntidad().getNombrePelicula());
-           cs.setString(2, dto.getEntidad().getSinopsis());
-           cs.setString(3, dto.getEntidad().getClasificacion());
-           cs.setInt(4, dto.getEntidad().getAnio());
-           cs.setInt(5, dto.getEntidad().getIdGenero());
-		   cs.setFloat(6, dto.getEntidad().getDuracion());
-		   cs.setString(7, dto.getEntidad().getDirector());
-		   cs.setInt(8, dto.getEntidad().getVotosPositivos());
-		   cs.setInt(9, dto.getEntidad().getVotosNegativos());
-		   cs.setString(9, dto.getEntidad().getLink());
+            cs = con.prepareCall(SQL_INSERT);
+            cs.setString(1, dto.getEntidad().getNombrePelicula());
+            cs.setString(2, dto.getEntidad().getSinopsis());
+            cs.setString(3, dto.getEntidad().getClasificacion());
+            cs.setInt(4, dto.getEntidad().getAnio());
+            cs.setInt(5, dto.getEntidad().getIdGenero());
+            cs.setFloat(6, dto.getEntidad().getDuracion());
+            cs.setString(7, dto.getEntidad().getDirector());
+            cs.setInt(8, dto.getEntidad().getVotosPositivos());
+            cs.setInt(9, dto.getEntidad().getVotosNegativos());
+            cs.setString(9, dto.getEntidad().getLink());
            cs.executeUpdate();
        } finally {
             if (cs!=null)
