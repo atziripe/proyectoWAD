@@ -127,7 +127,7 @@
             var datos1 = new Array();
             var etiquetas1 = new Array();
             var coloR1 = new Array();
-            <c:forEach var="item" items="${prod}">
+            <c:forEach var="item" items="${peli}">
                 etiquetas1.push('<c:out value='${item.nombre}'/>');
                 datos1.push('<c:out value='${item.cantidad}'/>'); 
                 coloR1.push(dynamicColors());

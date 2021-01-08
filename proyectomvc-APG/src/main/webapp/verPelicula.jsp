@@ -52,7 +52,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
-                        <h2 class="text-white mt-0">Pelicula <c:out value='${product.entidad.nombrePelicula}'/></h2>
+                        <h2 class="text-white mt-0">Pelicula <c:out value='${peli.entidad.nombrePelicula}'/></h2>
                         <hr class="divider light my-4" />
                         <div class="card bg-dark">
                             <div class="card-header text-light">
@@ -60,12 +60,12 @@
                             </div>
                             <div class="card-body">
                                 <ul class="list-group">
-                                    <li class="list-group-item">ID: <c:out value='${product.entidad.idPelicula}'/></li>
-                                    <li class="list-group-item">Nombre: <c:out value='${product.entidad.nombrePelicula}'/></li>
-                                    <li class="list-group-item">Descripción: <c:out value='${product.entidad.descripcionPelicula}'/></li>
-                                    <li class="list-group-item">Precio: $<c:out value='${product.entidad.precio}'/></li>
-                                    <li class="list-group-item">Existencia: <c:out value='${product.entidad.existencia}'/></li>
-                                    <li class="list-group-item">ID de categoria a la que pertenece: <c:out value='${product.entidad.idGenero}'/></li>
+                                    <li class="list-group-item">ID: <c:out value='${peli.entidad.idPelicula}'/></li>
+                                    <li class="list-group-item">Nombre: <c:out value='${peli.entidad.nombrePelicula}'/></li>
+                                    <li class="list-group-item">Descripción: <c:out value='${peli.entidad.descripcionPelicula}'/></li>
+                                    <li class="list-group-item">Precio: $<c:out value='${peli.entidad.precio}'/></li>
+                                    <li class="list-group-item">Existencia: <c:out value='${peli.entidad.existencia}'/></li>
+                                    <li class="list-group-item">ID de categoria a la que pertenece: <c:out value='${peli.entidad.idGenero}'/></li>
                                 </ul>                               
                             </div>
                         </div>
