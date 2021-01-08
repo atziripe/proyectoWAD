@@ -1,5 +1,5 @@
 <%-- 
-    Document   : categoriaForm
+    Document   : generoForm
     Created on : 25 nov. 2020, 15:31:40
     Author     : Atziri Perez
 --%>
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Agregar Producto</title>
+        <title>Agregar Pelicula</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -29,13 +29,13 @@
         <!-- Barra de navegación-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="inicioAdmin.jsp">Producto por Categoría</a>
+                <a class="navbar-brand js-scroll-trigger" href="inicioAdmin.jsp">Pelicula por Género</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                         aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="categoriaServlet?accion=listaDeCategorias">Categorias</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="generoServlet?accion=listaDeCategorias">Categorias</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=usuarios">Usuarios</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=actualizar&id=${sessionScope.user.entidad.idUsuario}"><i
                                     class="fas fa-2x fa-user-edit mb-4"></i>${sessionScope.user.entidad.nombreUsuario}</a></li>
@@ -49,21 +49,21 @@
         <!-- Form-->
         <section class="page-section bg-dark text-white">
             <div class="container text-center">
-                <h2 class="mb-4">Datos del producto</h2>
+                <h2 class="mb-4">Datos de la película</h2>
                 <hr class="divider my-4" />
                 <br>
-                <form action="productoServlet?accion=guardar" method= "POST" name="frmProducto" id="frmProducto">
-                    <input type="hidden" name="id" id="id" value="<c:out value='${producto.entidad.idProducto}'/>"/>
+                <form action="peliculaServlet?accion=guardar" method= "POST" name="frmPelicula" id="frmPelicula">
+                    <input type="hidden" name="id" id="id" value="<c:out value='${pelicula.entidad.idPelicula}'/>"/>
                     <div class="form-group row">
-                        <label for="txtNombreProducto" class="col-sm-2 col-form-label">Nombre producto</label>
+                        <label for="txtNombrePelicula" class="col-sm-2 col-form-label">Nombre pelicula</label>
                         <div class="col-sm-10">
-                            <input type="text" name="txtNombreProducto" id="txtNombreProducto" maxlength="50" required="required" placeholder="Nombre del producto" class="form-control" value="<c:out value='${producto.entidad.nombreProducto}'/>"/>
+                            <input type="text" name="txtNombrePelicula" id="txtNombrePelicula" maxlength="50" required="required" placeholder="Nombre del pelicula" class="form-control" value="<c:out value='${pelicula.entidad.nombrePelicula}'/>"/>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="txtDescipcionProducto" class="col-sm-2 col-form-label">Descripcion producto</label>
+                        <label for="txtDescipcionPelicula" class="col-sm-2 col-form-label">Descripcion pelicula</label>
                         <div class="col-sm-10">
-                            <input type="text" name="txtDescripcionProducto" id="txtDescripcionProducto" maxlength="250" required="required" placeholder="Descripcion del Producto" class="form-control" value="<c:out value='${producto.entidad.descripcionProducto}'/>"/>
+                            <input type="text" name="txtDescripcionPelicula" id="txtDescripcionPelicula" maxlength="250" required="required" placeholder="Descripcion del Pelicula" class="form-control" value="<c:out value='${pelicula.entidad.descripcionPelicula}'/>"/>
                         </div>
                     </div>
                     <div class="row g-3">
@@ -72,20 +72,20 @@
                             <div class="col-sm-10">
                                 <div class="input-group">
                                 <div class="input-group-text">$</div>
-                                    <input type="text" name="txtPrecio" id="txtPrecio" required="required" placeholder="Precio" class="form-control" value="<c:out value='${producto.entidad.precio}'/>"/>                            
+                                    <input type="text" name="txtPrecio" id="txtPrecio" required="required" placeholder="Precio" class="form-control" value="<c:out value='${pelicula.entidad.precio}'/>"/>                            
                                 </div>
                             </div>
                         </div>
                         <div class="col">
                             <label for="txtExistencia" class="col-sm-2 col-form-label">Existencia</label>
-                            <input type="text" name="txtExistencia" id="txtExistencia" required="required" placeholder="Existencia" class="form-control" value="<c:out value='${producto.entidad.existencia}'/>">
+                            <input type="text" name="txtExistencia" id="txtExistencia" required="required" placeholder="Existencia" class="form-control" value="<c:out value='${pelicula.entidad.existencia}'/>">
                         </div>
                     </div>
                         <br>
                     <div class="form-group row">
-                        <label for="txtIdCategoria" class="col-sm-2 col-form-label">ID categoria</label>
+                        <label for="txtIdCategoria" class="col-sm-2 col-form-label">ID genero</label>
                         <div class="col-sm-10">
-                            <input type="text" name="txtIdCategoria" id="txtIdCategoria" maxlength="250" required="required" placeholder="ID Categoría" class="form-control" value="<c:out value='${producto.entidad.idCategoria}'/>"/>
+                            <input type="text" name="txtIdCategoria" id="txtIdCategoria" maxlength="250" required="required" placeholder="ID Género" class="form-control" value="<c:out value='${pelicula.entidad.idCategoria}'/>"/>
                         </div>
                     </div>
                     <div class="row h-100 align-items-center justify-content-center text-center">

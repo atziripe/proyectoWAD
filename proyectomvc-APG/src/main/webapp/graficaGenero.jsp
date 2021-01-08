@@ -1,5 +1,5 @@
 <%-- 
-    Document   : graficaCategoria
+    Document   : graficaGenero
     Created on : 12 dic. 2020, 21:25:26
     Author     : Atziri Perez
 --%>
@@ -12,7 +12,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <title>Graficas Categoria</title>
+        <title>Graficas Géneros</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -31,14 +31,14 @@
         <!-- Barra de navegación-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="inicioAdmin.jsp">Producto por Categoría</a>
+                <a class="navbar-brand js-scroll-trigger" href="inicioAdmin.jsp">Pelicula por Género</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                         aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="categoriaServlet?accion=listaDeCategorias">Categorias</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="productoServlet?accion=nuevo">Nuevo producto</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="generoServlet?accion=listaDeGeneros">Generos</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="generoServlet?accion=nuevo">Nueva categoría</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=usuarios">Usuarios</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=actualizar&id=${sessionScope.user.entidad.idUsuario}"><i
                                     class="fas fa-2x fa-user-edit mb-4"></i>${sessionScope.user.entidad.nombreUsuario}</a></li>
@@ -48,29 +48,38 @@
                 </div>
             </div>
         </nav>
-        <!-- Grafica elementos por categoria-->
+        <!-- Grafica elementos por genero-->
         <section class="page-section bg-dark text-white">
-            <div class="container text-center">             
-                <h1 class="mb-4">Categoria <c:out value='${category.entidad.nombreCategoria}'/></h1>
-                <h2 class="mb-4">Existencia por producto</h2>
+            <div class="container text-center">
+                <h2 class="mb-4">Numero de películas por genero</h2>
 
                 <hr class="divider my-4" />
                 <br>
-                <canvas id="exxprod" ></canvas>
+                <canvas id="prodxcat" ></canvas>
             </div>
         </section>
         
-        <!-- Grafica precio promedio por categoria-->
+        <!-- Grafica precio promedio por genero-->
         <section class="page-section bg-light">
             <div class="container text-center">
-                <h2 class="mb-4">Precio promedio por categoría</h2>
+                <h2 class="mb-4">Precio promedio por género</h2>
 
                 <hr class="divider my-4" />
                 <br>
-                <canvas id="pricexprod" ></canvas>
+                <canvas id="pricexcat" ></canvas>
             </div>
         </section>
+        
+        <!-- Grafica inventario-->        
+        <section class="page-section bg-primary text-light">
+            <div class="container text-center">
+                <h2 class="mb-4">Inventario por género</h2>
 
+                <hr class="divider light my-4" />
+                <br>
+                <canvas id="inventario" ></canvas>
+            </div>
+        </section>
 
         <!-- Pie de página-->
         <footer class="bg-light py-5">
@@ -94,11 +103,11 @@
                 var b = Math.floor(Math.random() * 255);
                 return "rgb(" + r + "," + g + "," + b + ")";
             };
-            var pxc= document.getElementById("exxprod").getContext("2d");
+            var pxc= document.getElementById("prodxcat").getContext("2d");
             var datos = new Array();
             var etiquetas = new Array();
             var coloR = new Array();
-            <c:forEach var="item" items="${ex}">
+            <c:forEach var="item" items="${elem}">
                 etiquetas.push('<c:out value='${item.nombre}'/>');
                 datos.push('<c:out value='${item.cantidad}'/>'); 
                 coloR.push(dynamicColors());
@@ -114,11 +123,11 @@
                 }             
             }); 
             
-            var prexc= document.getElementById("pricexprod").getContext("2d");
+            var prexc= document.getElementById("pricexcat").getContext("2d");
             var datos1 = new Array();
             var etiquetas1 = new Array();
             var coloR1 = new Array();
-            <c:forEach var="item" items="${pr}">
+            <c:forEach var="item" items="${prod}">
                 etiquetas1.push('<c:out value='${item.nombre}'/>');
                 datos1.push('<c:out value='${item.cantidad}'/>'); 
                 coloR1.push(dynamicColors());
@@ -134,12 +143,32 @@
                     }]
                 },
                 options:{
-                 scales:{
-                     yAxes:[{
-                             ticks:{beginAtZero:true}
-                     }]
-                 }   
-                }                   
+                    scales:{
+                        yAxes:[{
+                                ticks:{beginAtZero:true}
+                        }]
+                    }   
+                }               
+            }); 
+            
+            var invxcat= document.getElementById("inventario").getContext("2d");
+            var datos2 = new Array();
+            var etiquetas2 = new Array();
+            var coloR2 = new Array();
+            <c:forEach var="item" items="${inv}">
+                etiquetas2.push('<c:out value='${item.nombre}'/>');
+                datos2.push('<c:out value='${item.cantidad}'/>'); 
+                coloR2.push(dynamicColors());
+            </c:forEach>  ;      
+            var myChart  = new Chart(invxcat,{
+                type: 'pie',
+                data:{
+                    labels: etiquetas2,
+                    datasets:[{
+                        data:datos2,
+                        backgroundColor: coloR2
+                    }]
+                }             
             }); 
         </script>
     </body>

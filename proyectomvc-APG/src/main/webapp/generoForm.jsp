@@ -1,5 +1,5 @@
 <%-- 
-    Document   : categoriaForm
+    Document   : generoForm
     Created on : 25 nov. 2020, 15:31:40
     Author     : Atziri Perez
 --%>
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Agregar categoria</title>
+        <title>Agregar Genero</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -29,13 +29,13 @@
         <!-- Barra de navegación-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="inicioAdmin.jsp">Producto por Categoría</a>
+                <a class="navbar-brand js-scroll-trigger" href="inicioAdmin.jsp">Pelicula por Genero</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="categoriaServlet?accion=listaDeCategorias">Categorias</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="generoServlet?accion=listaDeGeneros">Peliculas</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=usuarios">Usuarios</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=actualizar&id=${sessionScope.user.entidad.idUsuario}"><i
                                     class="fas fa-2x fa-user-edit mb-4"></i>${sessionScope.user.entidad.nombreUsuario}</a></li>
@@ -49,25 +49,25 @@
         <!-- Form-->
         <section class="page-section bg-dark text-white">
             <div class="container text-center">
-                <h2 class="mb-4">Datos de la categoria</h2>
+                <h2 class="mb-4">Datos del Género</h2>
                 <hr class="divider my-4" />
                 <br>
-                <form action="categoriaServlet?accion=guardar" method= "POST" name="frmCategoria" id="frmCategoria">
-                    <input type="hidden" name="id" id="id" value="<c:out value='${categoria.entidad.idCategoria}'/>"/>
+                <form action="generoServlet?accion=guardar" method= "POST" name="frmGenero" id="frmGenero">
+                    <input type="hidden" name="id" id="id" value="<c:out value='${genero.entidad.idGenero}'/>"/>
                     <div class="form-group row">
-                        <label for="txtNombreCategoria" class="col-sm-2 col-form-label">Nombre categoría</label>
+                        <label for="txtNombreGenero" class="col-sm-2 col-form-label">Nombre género</label>
                         <div class="col-sm-10">
-                            <input type="text" name="txtNombreCategoria" id="txtNombreCategoria" maxlength="50" required="required" placeholder="Nombre de la Categoria" class="form-control" value="<c:out value='${categoria.entidad.nombreCategoria}'/>"/>
+                            <input type="text" name="txtNombreGenero" id="txtNombreGenero" maxlength="50" required="required" placeholder="Nombre del Genero" class="form-control" value="<c:out value='${genero.entidad.nombreGenero}'/>"/>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="txtxDescipcionCategoria" class="col-sm-2 col-form-label">Descripcion categoria</label>
+                        <label for="txtDescipcionGenero" class="col-sm-2 col-form-label">Descripcion genero</label>
                         <div class="col-sm-10">
-                            <input type="text" name="txtDescripcionCategoria" id="txtDescripcionCategoria" maxlength="250" required="required" placeholder="Descripcion de la Categoria" class="form-control" value="<c:out value='${categoria.entidad.descripcionCategoria}'/>"/>
+                            <input type="text" name="txtDescripcionGenero" id="txtDescripcionGenero" maxlength="250" required="required" placeholder="Descripcion del Genero" class="form-control" value="<c:out value='${genero.entidad.descripcionGenero}'/>"/>
                         </div>
                     </div>
                     <div class="row h-100 align-items-center justify-content-center text-center">
-                        <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="Registrar Categoria"/>
+                        <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="Registrar Genero"/>
                     </div>
                 </form>
             </div>
