@@ -58,7 +58,7 @@ public class UsuarioDAO {
             Class.forName(driver);
             con = DriverManager.getConnection(url, usr, pwd);
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return con;
     }

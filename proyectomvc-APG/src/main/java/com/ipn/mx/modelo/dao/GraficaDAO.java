@@ -1,6 +1,6 @@
 package com.ipn.mx.modelo.dao;
 
-import com.ipn.mx.modelo.dto.CategoriaDTO;
+import com.ipn.mx.modelo.dto.GeneroDTO;
 import com.ipn.mx.modelo.dto.GraficaDTO;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -114,14 +114,14 @@ public class GraficaDAO {
         return resultados;
     }
     
-    public List graficaPExistencia(CategoriaDTO dtoC) throws SQLException{
+    public List graficaPExistencia(GeneroDTO dtoC) throws SQLException{
         obtenerConexion();
         PreparedStatement ps = null;
         ResultSet rs = null;
         List resultados = new ArrayList();
         try{
             ps = con.prepareStatement(SQL_GRAFICA_P_EXISTENCIA);
-            ps.setInt(1, dtoC.getEntidad().getIdCategoria());
+            ps.setInt(1, dtoC.getEntidad().getIdGenero());
             rs = ps.executeQuery();
             while(rs.next()){
                 GraficaDTO dto = new GraficaDTO();
@@ -140,14 +140,14 @@ public class GraficaDAO {
         return resultados;
     }
     
-    public List graficaPPrecio(CategoriaDTO dtoC) throws SQLException{
+    public List graficaPPrecio(GeneroDTO dtoC) throws SQLException{
         obtenerConexion();
         PreparedStatement ps = null;
         ResultSet rs = null;
         List resultados = new ArrayList();
         try{
             ps = con.prepareStatement(SQL_GRAFICA_P_PRECIO);
-            ps.setInt(1, dtoC.getEntidad().getIdCategoria());
+            ps.setInt(1, dtoC.getEntidad().getIdGenero());
             rs = ps.executeQuery();
             while(rs.next()){
                 GraficaDTO dto = new GraficaDTO();
