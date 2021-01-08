@@ -165,8 +165,8 @@ public class generoServlet extends HttpServlet {
         dto.getEntidad().setIdGenero(Integer.parseInt(request.getParameter("id")));
         try {
             dto = dao.read(dto);
-            request.setAttribute("categoria", dto);
-            RequestDispatcher vista = request.getRequestDispatcher("categoriaForm.jsp");
+            request.setAttribute("genero", dto);
+            RequestDispatcher vista = request.getRequestDispatcher("generoForm.jsp");
             vista.forward(request, response);
         } catch (SQLException | ServletException | IOException ex) {
             Logger.getLogger(generoServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -177,8 +177,8 @@ public class generoServlet extends HttpServlet {
         GeneroDAO dao = new GeneroDAO();
         GeneroDTO dto = new GeneroDTO();
         if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
-            dto.getEntidad().setNombreGenero(request.getParameter("txtNombreCategoria"));
-            dto.getEntidad().setDescripcionGenero(request.getParameter("txtDescripcionCategoria"));
+            dto.getEntidad().setNombreGenero(request.getParameter("txtNombreGenero"));
+            dto.getEntidad().setDescripcionGenero(request.getParameter("txtDescripcionGenero"));
             try {
                 dao.create(dto);
                 listaDeGeneros(request, response);
@@ -187,8 +187,8 @@ public class generoServlet extends HttpServlet {
             }
         } else {
             dto.getEntidad().setIdGenero(Integer.parseInt(request.getParameter("id")));
-            dto.getEntidad().setNombreGenero(request.getParameter("txtNombreCategoria"));
-            dto.getEntidad().setDescripcionGenero(request.getParameter("txtDescripcionCategoria"));
+            dto.getEntidad().setNombreGenero(request.getParameter("txtNombreGenero"));
+            dto.getEntidad().setDescripcionGenero(request.getParameter("txtDescripcionGenero"));
             try {
                 dao.update(dto);
                 listaDeGeneros(request, response);
@@ -203,14 +203,14 @@ public class generoServlet extends HttpServlet {
         GeneroDTO dtoC = new GeneroDTO();
         PeliculaDAO daoP = new PeliculaDAO();
         PeliculaDTO dtoP = new PeliculaDTO();
-        RequestDispatcher rd = request.getRequestDispatcher("ver.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("verGenero.jsp");
         dtoC.getEntidad().setIdGenero(Integer.parseInt(request.getParameter("id")));
         dtoP.getEntidad().setIdGenero(Integer.parseInt(request.getParameter("id")));
         try {
             dtoC = daoC.read(dtoC);
             List listaProd = daoP.readCat(dtoP);
-            request.setAttribute("cat", dtoC);
-            request.setAttribute("prod", listaProd);
+            request.setAttribute("gen", dtoC);
+            request.setAttribute("peli", listaProd);
             rd.forward(request, response);
         } catch (SQLException | ServletException | IOException ex) {
             Logger.getLogger(generoServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -219,13 +219,13 @@ public class generoServlet extends HttpServlet {
 
     private void graficar(HttpServletRequest request, HttpServletResponse response) {
         GraficaDAO dao = new GraficaDAO();
-        RequestDispatcher rd = request.getRequestDispatcher("graficaCategoria.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("graficaGenero.jsp");
         try {
             List listaElem = dao.graficaNumCat();
             List listAvgPrecio = dao.graficaAvgPrecio();
             List listInventario = dao.graficaInventario();
             request.setAttribute("elem", listaElem);
-            request.setAttribute("prod", listAvgPrecio);
+            request.setAttribute("peli", listAvgPrecio);
             request.setAttribute("inv", listInventario);
             rd.forward(request, response);
         } catch (IOException | ServletException | SQLException ex) {
