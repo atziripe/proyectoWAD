@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="generoServlet?accion=listaDeGeneros">Lista de Categorías</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="peliculaServlet?accion=grafica&id=${cat.entidad.idGenero}">Ver gráficas</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="peliculaServlet?accion=grafica&id=${gen.entidad.idGenero}">Ver gráficas</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="peliculaServlet?accion=reporte">Reporte PDF</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="peliculaServlet?accion=nuevo">Nuevo Pelicula</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=usuarios">Usuarios</a></li>
@@ -53,7 +53,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
-                        <h2 class="text-white mt-0">Genero <c:out value='${cat.entidad.nombreGenero}'/></h2>
+                        <h2 class="text-white mt-0">Genero <c:out value='${gen.entidad.nombreGenero}'/></h2>
                         <hr class="divider light my-4" />
                         <div class="card bg-primary">
                             <div class="card-header">
@@ -61,13 +61,13 @@
                             </div>
                             <div class="card-body">
                                 <ul class="list-group">
-                                    <li class="list-group-item"><c:out value='${cat.entidad.idGenero}'/></li>
-                                    <li class="list-group-item"><c:out value='${cat.entidad.nombreGenero}'/></li>
-                                    <li class="list-group-item"><c:out value='${cat.entidad.descripcionGenero}'/></li>
+                                    <li class="list-group-item"><c:out value='${gen.entidad.idGenero}'/></li>
+                                    <li class="list-group-item"><c:out value='${gen.entidad.nombreGenero}'/></li>
+                                    <li class="list-group-item"><c:out value='${gen.entidad.descripcionGenero}'/></li>
                                 </ul>
                             </div>
                         </div>
-                        <a class="btn btn-light btn-xl js-scroll-trigger" href="peliculaServlet?accion=grafica&id=${cat.entidad.idGenero}">Ver gráficas</a>
+                        <a class="btn btn-light btn-xl js-scroll-trigger" href="peliculaServlet?accion=grafica&id=${gen.entidad.idGenero}">Ver gráficas</a>
                         <a class="btn btn-light btn-xl js-scroll-trigger" href="peliculaServlet?accion=reporte">Reporte PDF</a>
                     </div>
                 </div>
