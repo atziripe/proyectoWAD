@@ -27,10 +27,10 @@ public class UsuarioDAO {
     private Connection con;
 
     public Connection obtenerConexion(){
-        String usr = "iyiqhsmhtpakpc";
-        String pwd = "1b3bfea7a51bbb7196a4dcbc554109b9526caf55685d0953a83ca2b8ed61a5b9";
+        String usr = "postgres";
+        String pwd = "password";
         String driver = "org.postgresql.Driver";
-        String url ="jdbc:postgresql://ec2-54-205-26-79.compute-1.amazonaws.com:5432/d4ifmdscgbpo2?sslmode=require";       
+        String url ="jdbc:postgresql://localhost:5432/proyectoWAD";       
         try {
             Class.forName(driver);
             con = DriverManager.getConnection(url, usr, pwd);
