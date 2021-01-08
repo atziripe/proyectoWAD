@@ -180,8 +180,8 @@ private void listaDeProductos(HttpServletRequest request, HttpServletResponse re
             dto.getEntidad().setAnio(Integer.parseInt(request.getParameter("txtAnio")));
             dto.getEntidad().setDuracion(Float.parseFloat(request.getParameter("txtDuracion")));
             dto.getEntidad().setDirector(request.getParameter("Director"));
-            dto.getEntidad().setVotosPositivos(Integer.parseInt(request.getParameter("votosPositivos")));
-            dto.getEntidad().setVotosNegativos(Integer.parseInt(request.getParameter("votosNegativos")));
+//            dto.getEntidad().setVotosPositivos(Integer.parseInt(request.getParameter("votosPositivos")));
+//            dto.getEntidad().setVotosNegativos(Integer.parseInt(request.getParameter("votosNegativos")));
             try {
                 dao.create(dto);
                 rd.forward(request, response);
@@ -196,8 +196,8 @@ private void listaDeProductos(HttpServletRequest request, HttpServletResponse re
             dto.getEntidad().setAnio(Integer.parseInt(request.getParameter("txtAnio")));
             dto.getEntidad().setDuracion(Float.parseFloat(request.getParameter("txtDuracion")));
             dto.getEntidad().setDirector(request.getParameter("Director"));
-            dto.getEntidad().setVotosPositivos(Integer.parseInt(request.getParameter("votosPositivos")));
-            dto.getEntidad().setVotosNegativos(Integer.parseInt(request.getParameter("votosNegativos")));
+//            dto.getEntidad().setVotosPositivos(Integer.parseInt(request.getParameter("votosPositivos")));
+//            dto.getEntidad().setVotosNegativos(Integer.parseInt(request.getParameter("votosNegativos")));
             try {
                 dao.update(dto);
                 rd.forward(request, response);
