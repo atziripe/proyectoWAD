@@ -1,6 +1,6 @@
 package com.ipn.mx.modelo.dto;
 
-import com.ipn.mx.modelo.entidades.Producto;
+import com.ipn.mx.modelo.entidades.Pelicula;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,10 +11,10 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class ProductoDTO implements Serializable {
-    private Producto entidad;
+public class PeliculaDTO implements Serializable {
+    private Pelicula entidad;
     
-    public ProductoDTO(){
-        entidad = new Producto();
+    public PeliculaDTO(){
+        entidad = new Pelicula();
     }
 }

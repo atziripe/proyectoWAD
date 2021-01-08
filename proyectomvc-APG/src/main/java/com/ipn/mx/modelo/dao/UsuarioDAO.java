@@ -28,12 +28,22 @@ public class UsuarioDAO {
     private Connection con;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public Connection obtenerConexion(){
         String usr = "postgres";
         String pwd = "1234";
         String driver = "org.postgresql.Driver";
         String url ="jdbc:postgresql://localhost:5432/proyectoWAD";       
 =======
+=======
+
+//    public Connection obtenerConexion(){
+//        String usr = "postgres";
+//        String pwd = "password";
+//        String driver = "org.postgresql.Driver";
+//        String url ="jdbc:postgresql://localhost:5432/proyectoWAD";       
+
+>>>>>>> 498d391b1e2fef506e116188858aa7c3ffdb398a
 //    public Connection obtenerConexion(){
 //        String usr = "postgres";
 //        String pwd = "12345fyy>";
