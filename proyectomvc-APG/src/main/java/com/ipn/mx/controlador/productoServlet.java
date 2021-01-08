@@ -2,7 +2,7 @@ package com.ipn.mx.controlador;
 
 import com.ipn.mx.modelo.dao.CategoriaDAO;
 import com.ipn.mx.modelo.dao.GraficaDAO;
-import com.ipn.mx.modelo.dao.ProductoDAO;
+import com.ipn.mx.modelo.dao.PeliculaDAO;
 import com.ipn.mx.modelo.dto.CategoriaDTO;
 import com.ipn.mx.modelo.dto.ProductoDTO;
 import java.io.File;
@@ -105,7 +105,7 @@ public class productoServlet extends HttpServlet {
     }// </editor-fold>
 
     private void listaDeProductos(HttpServletRequest request, HttpServletResponse response) {
-        ProductoDAO dao = new ProductoDAO();
+        PeliculaDAO dao = new PeliculaDAO();
         try {
             List lista = dao.readAll();
             request.setAttribute("listaDeProductos", lista);
@@ -126,7 +126,7 @@ public class productoServlet extends HttpServlet {
     }
 
     private void eliminarProducto(HttpServletRequest request, HttpServletResponse response) {
-        ProductoDAO dao = new ProductoDAO();
+        PeliculaDAO dao = new PeliculaDAO();
         ProductoDTO dto = new ProductoDTO();
         dto.getEntidad().setIdProducto(Integer.parseInt(request.getParameter("id")));
         RequestDispatcher rd = request.getRequestDispatcher("categoriaServlet?accion=listaDeCategorias");
@@ -139,7 +139,7 @@ public class productoServlet extends HttpServlet {
     }
 
     private void actualizarProducto(HttpServletRequest request, HttpServletResponse response) {
-        ProductoDAO dao = new ProductoDAO();
+        PeliculaDAO dao = new PeliculaDAO();
         ProductoDTO dto = new ProductoDTO();
         dto.getEntidad().setIdProducto(Integer.parseInt(request.getParameter("id")));
         try {
@@ -153,7 +153,7 @@ public class productoServlet extends HttpServlet {
     }
 
     private void almacenarProducto(HttpServletRequest request, HttpServletResponse response) {
-        ProductoDAO dao = new ProductoDAO();
+        PeliculaDAO dao = new PeliculaDAO();
         ProductoDTO dto = new ProductoDTO(); 
         RequestDispatcher rd = request.getRequestDispatcher("categoriaServlet?accion=listaDeCategorias");
          if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
@@ -185,7 +185,7 @@ public class productoServlet extends HttpServlet {
     }
 
     private void mostrarProducto(HttpServletRequest request, HttpServletResponse response) {    
-        ProductoDAO dao = new ProductoDAO();
+        PeliculaDAO dao = new PeliculaDAO();
         ProductoDTO dto = new ProductoDTO();
         RequestDispatcher rd = request.getRequestDispatcher("verProducto.jsp");
         dto.getEntidad().setIdProducto(Integer.parseInt(request.getParameter("id")));
@@ -218,7 +218,7 @@ public class productoServlet extends HttpServlet {
     }
     
     private void verPDF(HttpServletRequest request, HttpServletResponse response) {
-        ProductoDAO dao = new ProductoDAO();
+        PeliculaDAO dao = new PeliculaDAO();
         try {
             ServletOutputStream sos = response.getOutputStream();
             File reporte = new File(getServletConfig().getServletContext().getRealPath("/reportes/Productos.jasper"));

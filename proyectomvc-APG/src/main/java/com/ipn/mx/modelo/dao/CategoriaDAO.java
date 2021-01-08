@@ -17,7 +17,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /*
- * @author Atziri Perez
+ * @author Atziri Perez y el team
  */
 public class CategoriaDAO { 
 //    public static final String SQL_INSERT ="call spInsertarCategoria(?,?)"; 

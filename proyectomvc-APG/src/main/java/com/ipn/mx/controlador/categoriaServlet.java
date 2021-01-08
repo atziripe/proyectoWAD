@@ -2,7 +2,7 @@ package com.ipn.mx.controlador;
 
 import com.ipn.mx.modelo.dao.CategoriaDAO;
 import com.ipn.mx.modelo.dao.GraficaDAO;
-import com.ipn.mx.modelo.dao.ProductoDAO;
+import com.ipn.mx.modelo.dao.PeliculaDAO;
 import com.ipn.mx.modelo.dto.CategoriaDTO;
 import com.ipn.mx.modelo.dto.GraficaDTO;
 import com.ipn.mx.modelo.dto.ProductoDTO;
@@ -186,7 +186,7 @@ public class categoriaServlet extends HttpServlet {
     private void mostrarCategoria(HttpServletRequest request, HttpServletResponse response) {    
         CategoriaDAO daoC = new CategoriaDAO();
         CategoriaDTO dtoC = new CategoriaDTO();
-        ProductoDAO daoP = new ProductoDAO();
+        PeliculaDAO daoP = new PeliculaDAO();
         ProductoDTO dtoP = new ProductoDTO();
         RequestDispatcher rd = request.getRequestDispatcher("ver.jsp");
         dtoC.getEntidad().setIdCategoria(Integer.parseInt(request.getParameter("id")));
