@@ -61,35 +61,42 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="txtDescipcionPelicula" class="col-sm-2 col-form-label">Descripcion pelicula</label>
+                        <label for="txtSinopsisPelicula" class="col-sm-2 col-form-label">Sinopsis de la pelicula</label>
                         <div class="col-sm-10">
-                            <input type="text" name="txtDescripcionPelicula" id="txtDescripcionPelicula" maxlength="250" required="required" placeholder="Descripcion del Pelicula" class="form-control" value="<c:out value='${pelicula.entidad.descripcionPelicula}'/>"/>
+                            <input type="text" name="txtSinopsisPelicula" id="txtSinopsisPelicula" maxlength="250" required="required" placeholder="Sinopsis del Pelicula" class="form-control" value="<c:out value='${pelicula.entidad.sinopsis}'/>"/>
                         </div>
                     </div>
                     <div class="row g-3">
                         <div class="col">
-                            <label for="txtPrecio" class="col-sm-2 col-form-label">Precio</label>
+                            <label for="txtPrecio" class="col-sm-2 col-form-label">Clasificacion</label>
                             <div class="col-sm-10">
-                                <div class="input-group">
-                                <div class="input-group-text">$</div>
-                                    <input type="text" name="txtPrecio" id="txtPrecio" required="required" placeholder="Precio" class="form-control" value="<c:out value='${pelicula.entidad.precio}'/>"/>                            
+                                <div class="input-group">                             
+                                    <input type="text" name="txtClasificacion" id="txtClasificacion" required="required" placeholder="Clasificacion" class="form-control" value="<c:out value='${pelicula.entidad.clasificacion}'/>"/>                            
                                 </div>
                             </div>
                         </div>
                         <div class="col">
-                            <label for="txtExistencia" class="col-sm-2 col-form-label">Existencia</label>
-                            <input type="text" name="txtExistencia" id="txtExistencia" required="required" placeholder="Existencia" class="form-control" value="<c:out value='${pelicula.entidad.existencia}'/>">
+                            <label for="txtAnio" class="col-sm-2 col-form-label">Año</label>
+                            <input type="number"  max="2021" name="txtAnio" id="txtAnio" required="required" placeholder="Año" class="form-control" value="<c:out value='${pelicula.entidad.anio}'/>">
+                        </div>
+                        <div class="col">
+                            <label for="txtAnio" class="col-sm-2 col-form-label">Duracion</label>
+                            <input type="number"  name="txtDuracion" id="txtDuracion" required="required" placeholder="Duracion" class="form-control" value="<c:out value='${pelicula.entidad.duracion}'/>">
+                        </div>
+                        <div class="col">
+                            <label for="Director" class="col-sm-2 col-form-label">Director</label>
+                            <input type="text"  name="Director" id="Director" required="required" placeholder="Director" class="form-control" value="<c:out value='${pelicula.entidad.director}'/>">
                         </div>
                     </div>
                         <br>
                     <div class="form-group row">
-                        <label for="txtIdCategoria" class="col-sm-2 col-form-label">ID genero</label>
+                        <label for="txtIdGenero" class="col-sm-2 col-form-label">ID genero</label>
                         <div class="col-sm-10">
-                            <input type="text" name="txtIdCategoria" id="txtIdCategoria" maxlength="250" required="required" placeholder="ID Género" class="form-control" value="<c:out value='${pelicula.entidad.idCategoria}'/>"/>
+                            <input type="text" name="txtIdGenero" id="txtIdGenero" maxlength="250" required="required" placeholder="ID Género" class="form-control" value="<c:out value='${pelicula.entidad.idCategoria}'/>"/>
                         </div>
                     </div>
                     <div class="row h-100 align-items-center justify-content-center text-center">
-                        <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="Registrar Categoria"/>
+                        <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="Registrar Pelicula"/>
                     </div>
                 </form>
             </div>
