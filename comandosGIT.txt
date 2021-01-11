@@ -1,5 +1,5 @@
 1. clonar repositorio
- git clone 'https://github.com/atziripe/proyectoWAD.git'
+ git clone https://github.com/atziripe/proyectoWAD.git
 2. hacer un pull (mantener el repositorio actualizado)
  git pull origin main
 3. una vez que se hicieron cambios en la carpeta de git desde tu compu, hacer una add
