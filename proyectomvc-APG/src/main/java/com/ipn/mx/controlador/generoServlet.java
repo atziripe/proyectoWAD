@@ -27,11 +27,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartUtils;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.general.PieDataset;
+//import org.jfree.chart.ChartFactory;
+//import org.jfree.chart.ChartUtils;
+//import org.jfree.chart.JFreeChart;
+//import org.jfree.data.general.DefaultPieDataset;
+//import org.jfree.data.general.PieDataset;
 
 /**
  *

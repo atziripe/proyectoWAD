@@ -1,4 +1,6 @@
+com\ipn\mx\utilerias\Utilerias.class
 com\ipn\mx\modelo\entidades\Usuario.class
+com\ipn\mx\utilerias\HibernateUtil.class
 com\ipn\mx\modelo\entidades\Pelicula.class
 com\ipn\mx\controlador\peliculaServlet.class
 com\ipn\mx\modelo\dao\GraficaDAO.class
@@ -7,8 +9,6 @@ com\ipn\mx\modelo\dto\GeneroDTO.class
 com\ipn\mx\modelo\dto\GraficaDTO.class
 com\ipn\mx\modelo\dto\UsuarioDTO.class
 com\ipn\mx\modelo\dao\PeliculaDAO.class
-com\ipn\mx\utilerias\EnviarEmail.class
-com\ipn\mx\controlador\usuarioServlet.class
 com\ipn\mx\modelo\dao\GeneroDAO.class
 com\ipn\mx\modelo\entidades\Genero.class
 com\ipn\mx\modelo\dto\PeliculaDTO.class
