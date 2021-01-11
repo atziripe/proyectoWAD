@@ -1,7 +1,7 @@
 <%-- 
     Document   : error
     Created on : 19 nov. 2020, 9:41:11
-    Author     : Atziri Perez
+    Author     : TEAM
 --%>
 <%@page isErrorPage="true" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
