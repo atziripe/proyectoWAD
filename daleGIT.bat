@@ -16,7 +16,7 @@ exit
 
 :2
 cls
-set/p name= El commit:
+set/p name= El commit entre comillas:
 git pull origin main
 git add .
 git commit -m %name%
