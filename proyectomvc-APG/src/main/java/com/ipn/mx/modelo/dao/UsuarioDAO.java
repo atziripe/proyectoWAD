@@ -18,7 +18,7 @@ import org.hibernate.query.Query;
 
 /**
  *
- * @author El Team Shido
+ * @author El Team ShidoTE
  */
 public class UsuarioDAO {
 
