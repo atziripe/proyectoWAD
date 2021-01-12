@@ -9,8 +9,10 @@ import com.ipn.mx.modelo.dto.UsuarioDTO;
 import com.ipn.mx.modelo.entidades.Usuario;
 import com.ipn.mx.utilerias.HibernateUtil;
 import com.ipn.mx.utilerias.Utilerias;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -132,20 +134,29 @@ public class UsuarioDAO {
     public static void main(String[] args) {
         UsuarioDAO dao = new UsuarioDAO();
         UsuarioDTO dto = new UsuarioDTO();
-        dto.getEntidad().setIdUsuario(2);
+
+        dto.getEntidad().setIdUsuario(3);
+
+//        dto.getEntidad().setNombre("batman2");
+//        dto.getEntidad().setPaterno("batman");
+//        dto.getEntidad().setMaterno("batman");
+//        dto.getEntidad().setEmail("batman@baticueva.com");
+//        dto.getEntidad().setNombreUsuario("Murciélago");
+//        dto.getEntidad().setClaveUsuario("123");
+//        dto.getEntidad().setTipoUsuario("N");
+
+//        dao.update(dto);
+//        dao.delete(dto);
+//        dao.create(dto);
         
-        //dto.getEntidad().setNombreUsuario("batman");
-        //dto.getEntidad().setClaveUsuario("batman");
-        
-        
-        System.out.println(dao.readAll());
-        //System.out.println(dao.read(dto));
-        //System.out.println(dao.findByUserNameAndPassword(dto.getEntidad().getNombreUsuario(), dto.getEntidad().getClaveUsuario()));
+//System.out.println(dao.readAll());
+//System.out.println(dao.read(dto));
+
+//System.out.println(dao.findByUserNameAndPassword(dto.getEntidad().getNombreUsuario(), dto.getEntidad().getClaveUsuario()));
 //        if (dao.findByUserNameAndPassword(dto.getEntidad().getNombreUsuario(), dto.getEntidad().getClaveUsuario()) != null){
 //            Utilerias util = new Utilerias();
 //            util.enviarCorreo("asuncionez@gmail.com", "mensaje", "trexto");
-//            
-//        }
+//}
     }
 
 }
