@@ -8,3 +8,102 @@
  git commit -m "Tu comentario"
 5. Push
  git push origin main
+ 
+ GIT
+Logeo:
+    git config --global user.name "nombre"
+    git config --global user.email "correo@correo.com"
+Ver user:
+    git config --global -l
+Iniciar repositorio:
+    git init
+Agregar todos los cambios al repositorio:
+    git add .
+Agregar cambios solo de un commit (solo un cambio de todos los commits que se hicieoron):
+    git add <ruta y nombre del archivo modificado>
+Hacer el commmit:
+    git commit -m "Comentario"
+Ver status de los cambios:
+    git status
+Ver cambios de la version anterior a la que se actualizará:
+    git diff
+Regresar a la versión anterior:
+    git checkout .
+Ver historial de commits antes de hacer el push
+    git log
+Ver historial detallado
+    git log --oneline --decorate --all --graph
+Remover un cambio del stage:
+    git reset <directorio y archivo a remover>
+Poner alias a los comandos:
+    git config --global alias.<nuevo alias> "nombre del comando"  ej -> git config --global alias.l "log"
+Cambiar comentario en el commit despues de haberlo hecho:
+    git commit --amend -m "Nuevo comentario"
+Cambiar el nombre a un nuevo archivo commiteado:
+    git mv <nombre antiguo del archivo> <nombre nuevo>
+Remover un archivo:
+    git rm <Archivo a remover>
+Llevar a un commit de la lista (No realiza ningun cambio):
+    git reset --soft <id de commit del ultimo commit que queremos tener>
+Recuperar el commit que removimos (reconstruir):
+    git reset --hard <id del ultimo commit existente (antes del que borramos)>>
+Remover un commit manteniendo los cambios hechos en el:
+    git reset --mixed <id de commit del ultimo commit que queremos tener>
+Hacer un recuento de la actividad que hemos hecho
+    git reflog
+Ignorar cambios en ciertos archivos
+    - Hacer un txt que se llame .gitignore
+    - Escribir dentro de él, el nombre de todos los archivos que queremos ignorar
+        *Si es carpeta: nombre entre /
+        *Todos los archivos que empiecen con cierta palabra -> config*
+Hacer la rama
+    git branch <nombre de la rama nueva>
+Crear rama y dirigirnos a ella de inmediato:
+    git checkout -b <nombre de la rama nueva>
+Cambiarnos de rama 
+    git checkout <nombre de la rama> 
+Merge - Unir ramas 
+Fast Forward
+    git merge <nombre de la rama que queremos unir>
+Eliminar una rama
+    git branch -d <nombre de la rama a eliminar>
+Cuando hay merge con conflictos, se debe indicar manualmente la version correcta para solucionar los conflictos
+Tags y etiquetas - Nombrar una merge
+Crear etiqueta:
+    git tag <etiqueta>
+Crear etiqueta con mas detalles:
+    git tag -a <etiqueta> -m "Comentario"
+Eliminar etiqueta:
+    git tag -g <etiqueta a eliminar>
+Ver merge etiquetada (todos los detalles)
+    git show <etiqueta>
+Etiquetar un commit pasado
+    git tag -a <version> <id del commit> -m "Comentario"
+
+GITHUB
+Crear repo nuevo en github.com
+    git init
+    git add README.md
+    git commit -m "first commit"
+    git branch -M master
+    git remote add origin https://github.com/atziripe/web.git
+    git push -u origin master
+
+Añadir repo existente localmente a github
+    git remote add origin https://github.com/atziripe/web.git
+    git branch -M master
+    git push -u origin master
+
+Clonar un repo de git;
+    git clone https://github.com/atziripe/web.git
+
+Actualizar cambios en github
+    git push origin master (rama master)
+
+Traer cambios 
+    git pull
+
+Fork - llevar una copia de un repo de alguien mas a nuestros repos. 
+    Realizar el fork, clonarlo y ya hacer cambios ahi.
+
+Pull request - sugerir cambios que hiciste en un fork, al repositorio original (El que es de otra cuenta)
