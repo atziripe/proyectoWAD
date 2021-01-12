@@ -1,5 +1,5 @@
 1. clonar repositorio
- git clone 'https://github.com/atziripe/proyectoWAD.git'
+ git clone https://github.com/atziripe/proyectoWAD.git
 2. hacer un pull (mantener el repositorio actualizado)
  git pull origin main
 3. una vez que se hicieron cambios en la carpeta de git desde tu compu, hacer una add
@@ -8,6 +8,7 @@
  git commit -m "Tu comentario"
 5. Push
  git push origin main
+<<<<<<< HEAD
  
  GIT
 Logeo:
@@ -107,3 +108,5 @@ Fork - llevar una copia de un repo de alguien mas a nuestros repos.
     Realizar el fork, clonarlo y ya hacer cambios ahi.
 
 Pull request - sugerir cambios que hiciste en un fork, al repositorio original (El que es de otra cuenta)
+=======
+>>>>>>> e4b6e49da3b611948073f9c7722251891965e591
