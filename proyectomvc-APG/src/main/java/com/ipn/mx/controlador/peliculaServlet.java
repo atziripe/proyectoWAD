@@ -123,12 +123,12 @@ public class peliculaServlet extends HttpServlet {
 
 private void listaDeProductos(HttpServletRequest request, HttpServletResponse response) {
         PeliculaDAO dao = new PeliculaDAO();
+        List lista = dao.readAll();
+        request.setAttribute("listaDeProductos", lista);
+        RequestDispatcher rd = request.getRequestDispatcher("listaPelicula.jsp");
         try {
-            List lista = dao.readAll();
-            request.setAttribute("listaDeProductos", lista);
-            RequestDispatcher rd = request.getRequestDispatcher("listaPelicula.jsp");
             rd.forward(request,response);
-        } catch (SQLException | ServletException | IOException ex) {
+        } catch (ServletException | IOException ex) {
             Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -147,24 +147,24 @@ private void listaDeProductos(HttpServletRequest request, HttpServletResponse re
         PeliculaDTO dto = new PeliculaDTO();
         dto.getEntidad().setIdPelicula(Integer.parseInt(request.getParameter("id")));
         RequestDispatcher rd = request.getRequestDispatcher("generoServlet?accion=listaDeGeneros");
-        try {
-            dao.delete(dto);
+        dao.delete(dto);
+        try {     
             rd.forward(request, response);
-        } catch (SQLException | ServletException | IOException ex) {
+        } catch (ServletException | IOException ex) {
             Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }     
+        }
     }
 
     private void actualizarPelicula(HttpServletRequest request, HttpServletResponse response) {
         PeliculaDAO dao = new PeliculaDAO();
         PeliculaDTO dto = new PeliculaDTO();
         dto.getEntidad().setIdPelicula(Integer.parseInt(request.getParameter("id")));
+        dto = dao.read(dto);
+        request.setAttribute("pelicula",dto);
+        RequestDispatcher vista = request.getRequestDispatcher("peliculaForm.jsp");
         try {
-            dto = dao.read(dto);
-            request.setAttribute("pelicula",dto);
-            RequestDispatcher vista = request.getRequestDispatcher("peliculaForm.jsp");
             vista.forward(request, response);
-        } catch (SQLException | ServletException | IOException ex) {
+        } catch (ServletException | IOException ex) {
             Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -182,10 +182,10 @@ private void listaDeProductos(HttpServletRequest request, HttpServletResponse re
             dto.getEntidad().setDirector(request.getParameter("Director"));
 //            dto.getEntidad().setVotosPositivos(Integer.parseInt(request.getParameter("votosPositivos")));
 //            dto.getEntidad().setVotosNegativos(Integer.parseInt(request.getParameter("votosNegativos")));
+dao.create(dto);
             try {
-                dao.create(dto);
                 rd.forward(request, response);
-            } catch (SQLException | ServletException | IOException ex) {
+            } catch (ServletException | IOException ex) {
                 Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
          }else{
@@ -198,10 +198,10 @@ private void listaDeProductos(HttpServletRequest request, HttpServletResponse re
             dto.getEntidad().setDirector(request.getParameter("Director"));
 //            dto.getEntidad().setVotosPositivos(Integer.parseInt(request.getParameter("votosPositivos")));
 //            dto.getEntidad().setVotosNegativos(Integer.parseInt(request.getParameter("votosNegativos")));
+dao.update(dto);
             try {
-                dao.update(dto);
                 rd.forward(request, response);
-            } catch (SQLException | ServletException | IOException ex) {
+            } catch (ServletException | IOException ex) {
                 Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
          }
@@ -216,7 +216,7 @@ private void listaDeProductos(HttpServletRequest request, HttpServletResponse re
             dto = dao.read(dto);
             request.setAttribute("product",dto);
             rd.forward(request, response);
-        } catch (SQLException | ServletException | IOException ex) {
+        } catch (ServletException | IOException ex) {
             Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -241,18 +241,18 @@ private void listaDeProductos(HttpServletRequest request, HttpServletResponse re
     }
     
     private void verPDF(HttpServletRequest request, HttpServletResponse response) {
-        PeliculaDAO dao = new PeliculaDAO();
-        try {
-            ServletOutputStream sos = response.getOutputStream();
-            File reporte = new File(getServletConfig().getServletContext().getRealPath("/reportes/Productos.jasper"));
-            byte[] bytes  = JasperRunManager.runReportToPdf(reporte.getPath(),null, dao.obtenerConexion());
-            response.setContentType("application/pdf");
-            response.setContentLength(bytes.length);
-            sos.write(bytes, 0, bytes.length);
-            sos.flush();
-            sos.close();
-        } catch (IOException | JRException ex) {
-            Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        PeliculaDAO dao = new PeliculaDAO();
+//        try {
+//            ServletOutputStream sos = response.getOutputStream();
+//            File reporte = new File(getServletConfig().getServletContext().getRealPath("/reportes/Productos.jasper"));
+//            //byte[] bytes  = JasperRunManager.runReportToPdf(reporte.getPath(),null, dao.obtenerConexion());
+//            response.setContentType("application/pdf");
+//            response.setContentLength(bytes.length);
+//            sos.write(bytes, 0, bytes.length);
+//            sos.flush();
+//            sos.close();
+//        } catch (IOException | JRException ex) {
+//            Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 }
