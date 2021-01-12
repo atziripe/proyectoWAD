@@ -7,181 +7,118 @@ package com.ipn.mx.modelo.dao;
 
 import com.ipn.mx.modelo.dto.GeneroDTO;
 import com.ipn.mx.modelo.entidades.Genero;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.ipn.mx.utilerias.HibernateUtil;
+import com.ipn.mx.utilerias.Utilerias;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Team
  */
 public class GeneroDAO {
-
-    public static final String SQL_INSERT = "insert into Genero values (default,? , ?)";
-    public static final String SQL_UPDATE = "update Genero set nombreGenero = ?, descripcionGenero = ? where idGenero  = ?";
-    public static final String SQL_DELETE = "delete from Genero where idGenero = ?";
-    public static final String SQL_READ = "select * from Genero where idGenero = ?";
-    public static final String SQL_READ_ALL = "SELECT idGenero, nombreGenero, descripcionGenero FROM Genero;";
-
-    private Connection con;
-
-    public Connection obtenerConexion() {
-        String usr = "postgres";
-        String pwd = "1234fyy>";
-        String driver = "org.postgresql.Driver";
-        //String driver = "com.mysql.jdbc.Driver";
-        //String url = "jdbc:mysql://localhost:3306/3CM4";
-        String url = "jdbc:postgresql://localhost:5432/proyectoWAD";
+    
+    public void create(GeneroDTO dto) {
+        Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = sesion.getTransaction();
         try {
-            Class.forName(driver);
-            con = DriverManager.getConnection(url, usr, pwd);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(GeneroDAO.class.getName()).log(Level.SEVERE, null, ex);
+            transaction.begin();
+            sesion.save(dto.getEntidad());
+            transaction.commit();
+        } catch (HibernateException he) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
         }
-        return con;
     }
 
-    public void create(GeneroDTO dto) throws SQLException {
-        obtenerConexion();
-        CallableStatement cs = null;
+    public void update(GeneroDTO dto) {
+        Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = sesion.getTransaction();
         try {
-            cs = con.prepareCall(SQL_INSERT);
-            cs.setString(1, dto.getEntidad().getNombreGenero());
-            cs.setString(2, dto.getEntidad().getDescripcionGenero());
-            cs.executeUpdate();
-        } finally {
-            if (cs != null) {
-                cs.close();
-            }
-            if (con != null) {
-                con.close();
+            transaction.begin();
+            sesion.update(dto.getEntidad());
+            transaction.commit();
+        } catch (HibernateException he) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
             }
         }
     }
 
-    public void update(GeneroDTO dto) throws SQLException {
-        obtenerConexion();
-        CallableStatement cs = null;
+    public void delete(GeneroDTO dto) {
+        Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = sesion.getTransaction();
         try {
-            cs = con.prepareCall(SQL_UPDATE);
-            cs.setString(1, dto.getEntidad().getNombreGenero());
-            cs.setString(2, dto.getEntidad().getDescripcionGenero());
-            cs.setInt(3, dto.getEntidad().getIdGenero());
-            cs.executeUpdate();
-        } finally {
-            if (cs != null) {
-                cs.close();
-            }
-            if (con != null) {
-                con.close();
+            transaction.begin();
+            sesion.delete(dto.getEntidad());
+            transaction.commit();
+        } catch (HibernateException he) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
             }
         }
     }
 
-    public void delete(GeneroDTO dto) throws SQLException {
-        obtenerConexion();
-        CallableStatement cs = null;
+    public GeneroDTO read(GeneroDTO dto) {
+        Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = sesion.getTransaction();
         try {
-            cs = con.prepareCall(SQL_DELETE);
-            cs.setInt(1, dto.getEntidad().getIdGenero());
-            cs.executeUpdate();
-        } finally {
-            if (cs != null) {
-                cs.close();
-            }
-            if (con != null) {
-                con.close();
+            transaction.begin();
+            //select * from usuario where idUsuario = ?
+            dto.setEntidad(sesion.get(dto.getEntidad().getClass(), dto.getEntidad().getIdGenero()));
+            //dto.setEntidad(dto.getEntidad());
+            transaction.commit();
+        } catch (HibernateException he) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
             }
         }
+        return dto;
     }
 
-    public GeneroDTO read(GeneroDTO dto) throws SQLException {
-        obtenerConexion();
-        CallableStatement cs = null;
-        ResultSet rs = null;
+    public List readAll() {
+        Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = sesion.getTransaction();
+        List lista = new ArrayList();
         try {
-            cs = con.prepareCall(SQL_READ);
-            cs.setInt(1, dto.getEntidad().getIdGenero());
-            rs = cs.executeQuery();
-            List Resultados = obtenerResultados(rs);
-            if (Resultados.size() > 0) {
-                return (GeneroDTO) Resultados.get(0);
-            } else {
-                return null;
+            transaction.begin();
+            //select * from Usuario u order by u.idUsuario;
+            //              Usuario u
+            Query q = sesion.createQuery("from Genero gen order by gen.idGenero");
+            for (Genero gen : (List<Genero>) q.list()) {
+                GeneroDTO dto = new GeneroDTO();
+                dto.setEntidad(gen);
+                lista.add(dto);
             }
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (cs != null) {
-                cs.close();
-            }
-            if (con != null) {
-                con.close();
+            transaction.commit();
+        } catch (HibernateException he) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
             }
         }
+        return lista;
     }
 
-    public List readAll() throws SQLException {
-        obtenerConexion();
-        CallableStatement cs = null;
-        ResultSet rs = null;
-        try {
-            cs = con.prepareCall(SQL_READ_ALL);
-            rs = cs.executeQuery();
-            List Resultados = obtenerResultados(rs);
-            System.out.println(Resultados.size());
-            if (Resultados.size() > 0) {
-                return Resultados;
-            } else {
-                return null;
-            }
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (cs != null) {
-                cs.close();
-            }
-            if (con != null) {
-                con.close();
-            }
-        }
-    }
-
-    private List obtenerResultados(ResultSet rs) throws SQLException {
-        List resultados = new ArrayList();
-        while (rs.next()) {
-            GeneroDTO dto = new GeneroDTO();
-            dto.getEntidad().setIdGenero(rs.getInt("idGenero"));
-            dto.getEntidad().setNombreGenero(rs.getString("nombreGenero"));
-            dto.getEntidad().setDescripcionGenero(rs.getString("descripcionGenero"));
-            resultados.add(dto);
-        }
-        return resultados;
-    }
-
-    public static void main(String[] args) {
-
+        public static void main(String[] args) {
         GeneroDAO dao = new GeneroDAO();
         GeneroDTO dto = new GeneroDTO();
+        
+        dto.getEntidad().setIdGenero(5);
+        
+//        dto.getEntidad().setNombreGenero("Newbatman2");
+//        dto.getEntidad().setDescripcionGenero("batman");
 
-        try {
-            List res = dao.readAll();
-            System.out.println(res);
-        } catch (SQLException ex) {
-            Logger.getLogger(Genero.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        dao.update(dto);
+//        dao.delete(dto);
+//        dao.create(dto);
+        
+//System.out.println(dao.readAll());
+System.out.println(dao.read(dto));
     }
 
 }
