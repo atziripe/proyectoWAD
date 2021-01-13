@@ -9,11 +9,8 @@
             jdbc:postgresql://localhost:5432/proyectoWAD
         </property>
         <property name="connection.username">postgres</property>
-<<<<<<< HEAD
-        <property name="connection.password">1234fyy></property>
-=======
         <property name="connection.password">password</property>
->>>>>>> 5f3affe70898655e324f421bd879b6698339fc81
+
         
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">1</property>
