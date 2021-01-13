@@ -37,10 +37,10 @@
                         aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="categoriaServlet?accion=grafica">Grafica Genero</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="categoriaServlet?accion=reporte">Reporte PDF</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="categoriaServlet?accion=nuevo">Nueva categoría</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="productoServlet?accion=nuevo">Nuevo Pelicula</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="generoServlet?accion=grafica">Grafica Genero</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="generoServlet?accion=reporte">Reporte PDF</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="generoServlet?accion=nuevo">Nueva categoría</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="peliculaServlet?accion=nuevo">Nuevo Pelicula</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=usuarios">Usuarios</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=actualizar&id=${sessionScope.user.entidad.idUsuario}"><i
                                     class="fas fa-2x fa-user-edit mb-4"></i>${sessionScope.user.entidad.nombreUsuario}</a></li>
@@ -72,7 +72,7 @@
                                 <tr>
                                     <td>
                                         <a class="btn btn-light btn-xs"
-                                           href="categoriaServlet?accion=ver&id=<c:out value='${dto.entidad.idGenero}'/>"
+                                           href="generoServlet?accion=ver&id=<c:out value='${dto.entidad.idGenero}'/>"
                                            >
                                             <c:out value="${dto.entidad.idGenero}"/>
                                         </a>
@@ -85,14 +85,14 @@
                                     </td>
                                     <td>
                                         <a 
-                                            href="categoriaServlet?accion=actualizar&id=<c:out value='${dto.entidad.idGenero}'/>"
+                                            href="generoServlet?accion=actualizar&id=<c:out value='${dto.entidad.idGenero}'/>"
                                             >
                                             <i class="fas fa-2x fa-pencil-alt text-success mb-4"></i>
                                         </a>
                                     </td>
                                     <td>
                                         <a 
-                                            href="categoriaServlet?accion=eliminar&id=<c:out value='${dto.entidad.idGenero}'/>"
+                                            href="generoServlet?accion=eliminar&id=<c:out value='${dto.entidad.idGenero}'/>"
                                             >
                                             <i class="fas fa-2x fa-trash-alt text-primary mb-4"></i>
                                         </a>
