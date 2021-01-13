@@ -74,11 +74,8 @@ public class generoServlet extends HttpServlet {
                             } else {
                                 if (accion.equals("grafica")) {
                                     graficar(request, response);
-                                } else {
-                                    if (accion.equals("reporte")) {
-                                        verPDF(request, response);
-                                    }
-                                }
+                                } 
+                                
                             }
                         }
                     }
