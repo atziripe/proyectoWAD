@@ -67,7 +67,7 @@ public class peliculaServlet extends HttpServlet {
                                 mostrarPelicula(request, response);
                             } else {
                                 if (accion.equals("grafica")) {
-                                    graficar(request, response);
+                                    //graficar(request, response);
                                 } else {
                                     if (accion.equals("reporte")) {
                                         verPDF(request, response);
@@ -221,24 +221,24 @@ dao.update(dto);
         }
     }
 
-    private void graficar(HttpServletRequest request, HttpServletResponse response) {
-        GraficaDAO dao = new GraficaDAO();
-        GeneroDAO daoC = new GeneroDAO();
-        GeneroDTO dto = new GeneroDTO();
-        RequestDispatcher rd = request.getRequestDispatcher("graficaProducto.jsp");
-        dto.getEntidad().setIdGenero(Integer.parseInt(request.getParameter("id")));
-        try {            
-            List listaEx = dao.graficaPExistencia(dto);
-            List listPrecio = dao.graficaPPrecio(dto);
-            dto = daoC.read(dto);
-            request.setAttribute("ex",listaEx);
-            request.setAttribute("pr",listPrecio);
-            request.setAttribute("category",dto);
-            rd.forward(request,response);
-        } catch (IOException | ServletException | SQLException ex) {
-            Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//    private void graficar(HttpServletRequest request, HttpServletResponse response) {
+//        GraficaDAO dao = new GraficaDAO();
+//        GeneroDAO daoC = new GeneroDAO();
+//        GeneroDTO dto = new GeneroDTO();
+//        RequestDispatcher rd = request.getRequestDispatcher("graficaProducto.jsp");
+//        dto.getEntidad().setIdGenero(Integer.parseInt(request.getParameter("id")));
+//        try {            
+//            List listaEx = dao.graficaPExistencia(dto);
+//            List listPrecio = dao.graficaPPrecio(dto);
+//            dto = daoC.read(dto);
+//            request.setAttribute("ex",listaEx);
+//            request.setAttribute("pr",listPrecio);
+//            request.setAttribute("category",dto);
+//            rd.forward(request,response);
+//        } catch (IOException | ServletException | SQLException ex) {
+//            Logger.getLogger(peliculaServlet.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
     
     private void verPDF(HttpServletRequest request, HttpServletResponse response) {
 //        PeliculaDAO dao = new PeliculaDAO();
