@@ -135,19 +135,19 @@ public class UsuarioDAO {
         UsuarioDAO dao = new UsuarioDAO();
         UsuarioDTO dto = new UsuarioDTO();
 
-        dto.getEntidad().setIdUsuario(3);
+       // dto.getEntidad().setIdUsuario(3);
 
-//        dto.getEntidad().setNombre("batman2");
-//        dto.getEntidad().setPaterno("batman");
-//        dto.getEntidad().setMaterno("batman");
-//        dto.getEntidad().setEmail("batman@baticueva.com");
-//        dto.getEntidad().setNombreUsuario("Murciélago");
-//        dto.getEntidad().setClaveUsuario("123");
-//        dto.getEntidad().setTipoUsuario("N");
+        dto.getEntidad().setNombre("batman2");
+        dto.getEntidad().setPaterno("batman");
+        dto.getEntidad().setMaterno("batman");
+        dto.getEntidad().setEmail("batman@baticueva.com");
+        dto.getEntidad().setNombreUsuario("Murciélago");
+        dto.getEntidad().setClaveUsuario("123");
+        dto.getEntidad().setTipoUsuario("N");
 
 //        dao.update(dto);
 //        dao.delete(dto);
-//        dao.create(dto);
+        dao.create(dto);
         
 //System.out.println(dao.readAll());
 //System.out.println(dao.read(dto));

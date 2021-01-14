@@ -103,7 +103,8 @@
                 var b = Math.floor(Math.random() * 255);
                 return "rgb(" + r + "," + g + "," + b + ")";
             };
-            var pxc= document.getElementById("prodxcat").getContext("2d");
+            //Grafica peliculas por genero
+            var pxc= document.getElementById("pelixgen").getContext("2d");
             var datos = new Array();
             var etiquetas = new Array();
             var coloR = new Array();
@@ -123,7 +124,7 @@
                 }             
             }); 
             
-            var prexc= document.getElementById("pricexcat").getContext("2d");
+            var prexc= document.getElementById("xcat").getContext("2d");
             var datos1 = new Array();
             var etiquetas1 = new Array();
             var coloR1 = new Array();
