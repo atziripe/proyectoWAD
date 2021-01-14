@@ -39,7 +39,7 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="categoriaServlet?accion=listaDeCategorias">Categorias</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="generoServlet?accion=listaDeGeneros">Generos</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=usuarios">Usuarios</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=actualizar&id=${sessionScope.user.entidad.idUsuario}"><i
                                 class="fas fa-2x fa-user-edit mb-4"></i>${sessionScope.user.entidad.nombreUsuario}</a></li>
@@ -114,7 +114,7 @@
                 </div>
             </div>
             <div class="row h-100 align-items-center justify-content-center text-center">
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="categoriaServlet?accion=listaDeCategorias">Ver más</a>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="generoServlet?accion=listaDeGeneros">Ver más</a>
             </div>
         </div>
     </section>
@@ -163,19 +163,19 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h2 class="mt-0">Hecho por Atziri Perez García</h2>
+                    <h2 class="mt-0">Hecho por Atziri Perez García, Roberto Sánchez Velóz & Fernando Hernández Escobedo</h2>
                     <hr class="divider my-4" />
-                    <p class="text-muted mb-5">Estudiante de la ESCOM en 8vo semestre</p>
+                    <p class="text-muted mb-5">Estudiantes de la ESCOM en 8vo semestre</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
                     <i class="fab fa-github fa-3x mb-3 text-muted"></i>
-                    <div>atziripe</div>
+                    <div>atziripe_RobertoVeloz_FHE9317</div>
                 </div>
                 <div class="col-lg-4 mr-auto text-center">
                     <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
-                    <a class="d-block" href="mailto:aperezg1300@alumno.ipn.mx">aperezg1300@alumno.ipn.mx</a>
+                    <a class="d-block" href="mailto:aperezg1300@alumno.ipn.mx">weas.wad.2020@gmail.com</a>
                 </div>
             </div>
         </div>

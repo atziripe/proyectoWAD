@@ -177,7 +177,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
-                        <h2 class="mt-0">Hecho por Atziri Perez García</h2>
+                        <h2 class="mt-0">Hecho por Atziri Perez García, Roberto Sánchez Velóz & Fernando Hernández Escobedo</h2>
                         <hr class="divider my-4" />
                         <p class="text-muted mb-5">Estudiante del 8vo semestre de la ESCOM</p>
                     </div>
@@ -189,7 +189,7 @@
                     </div>
                     <div class="col-lg-4 mr-auto text-center">
                         <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>      
-                        <a class="d-block" href="mailto:aperezg1300@alumno.ipn.mx">aperezg1300@alumno.ipn.mx</a>
+                        <a class="d-block" href="mailto:weas.wad.2020@gmail.com">weas.wad.2020@gmail.com</a>
                     </div>
                 </div>
             </div>

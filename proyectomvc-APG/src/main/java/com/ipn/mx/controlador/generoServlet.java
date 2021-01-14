@@ -73,7 +73,7 @@ public class generoServlet extends HttpServlet {
                                 mostrarGenero(request, response);
                             } else {
                                 if (accion.equals("grafica")) {
-                                    graficar(request, response);
+                                    //graficar(request, response);
                                 } 
                                 
                             }
@@ -202,21 +202,21 @@ public class generoServlet extends HttpServlet {
         }
     }
 
-    private void graficar(HttpServletRequest request, HttpServletResponse response) {
-        GraficaDAO dao = new GraficaDAO();
-        RequestDispatcher rd = request.getRequestDispatcher("graficaGenero.jsp");
-        try {
-            List listaElem = dao.graficaNumCat();
-            List listAvgPrecio = dao.graficaAvgPrecio();
-            List listInventario = dao.graficaInventario();
-            request.setAttribute("elem", listaElem);
-            request.setAttribute("peli", listAvgPrecio);
-            request.setAttribute("inv", listInventario);
-            rd.forward(request, response);
-        } catch (IOException | ServletException | SQLException ex) {
-            Logger.getLogger(generoServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//    private void graficar(HttpServletRequest request, HttpServletResponse response) {
+//        GraficaDAO dao = new GraficaDAO();
+//        RequestDispatcher rd = request.getRequestDispatcher("graficaGenero.jsp");
+//        try {
+//            List listaElem = dao.graficaNumCat();
+//            List listAvgPrecio = dao.graficaAvgPrecio();
+//            List listInventario = dao.graficaInventario();
+//            request.setAttribute("elem", listaElem);
+//            request.setAttribute("peli", listAvgPrecio);
+//            request.setAttribute("inv", listInventario);
+//            rd.forward(request, response);
+//        } catch (IOException | ServletException | SQLException ex) {
+//            Logger.getLogger(generoServlet.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 
 //    private void verPDF(HttpServletRequest request, HttpServletResponse response) {
 //        GeneroDAO dao = new GeneroDAO();
