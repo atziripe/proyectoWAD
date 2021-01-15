@@ -28,7 +28,7 @@ public class GraficaDAO {
             //              Usuario u
             //select nombreGenero as Genero, count (*) as Peliculas from Pelicula p, Genero g where g.idGenero = p.idGenero group by g.idGenero
             //Query q = sesion.createQuery("from Pelicula peli where idGenero = "+ dto.getEntidad().getIdGenero());
-            Query q = sesion.createQuery("nombreGenero as Genero, count (*) as Peliculas from Pelicula p, Genero g where g.idGenero = p.idGenero group by g.idGenero");
+            Query q = sesion.createQuery("select g.nombreGenero as Genero, count (*) as Peliculas from Pelicula p, Genero g where g.idGenero = p.idGenero group by g.idGenero");
             for (Genero gen : (List<Genero>) q.list()) {
                 GeneroDTO dto = new GeneroDTO();
                 dto.setEntidad(gen);
