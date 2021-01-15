@@ -106,7 +106,6 @@ public class PeliculaDAO {
             Query q = sesion.createQuery("from Pelicula peli where idGenero = "+ dto.getEntidad().getIdGenero());
 
             for (Pelicula peli : (List<Pelicula>) q.list()) {
-               // PeliculaDTO dto = new PeliculaDTO();
                 dto.setEntidad(peli);
                 lista.add(dto);
             }
