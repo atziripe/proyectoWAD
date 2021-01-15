@@ -12,7 +12,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <title>Graficas Genero</title>
+        <title>Graficas</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -37,8 +37,8 @@
                         aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="categoriaServlet?accion=listaDeGeneros">Generos</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="productoServlet?accion=nuevo">Nueva pelicula</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="generoServlet?accion=listaDeGeneros">Generos</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="generoServlet?accion=nuevo">Nueva categoría</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=usuarios">Usuarios</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=actualizar&id=${sessionScope.user.entidad.idUsuario}"><i
                                     class="fas fa-2x fa-user-edit mb-4"></i>${sessionScope.user.entidad.nombreUsuario}</a></li>
@@ -48,30 +48,60 @@
                 </div>
             </div>
         </nav>
-        <!-- Grafica elementos por categoria-->
+        <!-- Grafica peliculas por genero-->
         <section class="page-section bg-dark text-white">
-            <div class="container text-center">             
-                <h1 class="mb-4">Genero <c:out value='${category.entidad.nombreGenero}'/></h1>
-                <h2 class="mb-4">Existencia por pelicula</h2>
+            <div class="container text-center">
+                <h2 class="mb-4">Numero de películas por genero</h2>
 
                 <hr class="divider my-4" />
                 <br>
-                <canvas id="exxprod" ></canvas>
+                <canvas id="pelixgen" ></canvas>
             </div>
         </section>
         
-        <!-- Grafica precio promedio por categoria-->
+        <!-- Grafica votos positivos x genero-->
         <section class="page-section bg-light">
             <div class="container text-center">
-                <h2 class="mb-4">Precio promedio por género</h2>
+                <h2 class="mb-4">Votos positivos por género</h2>
 
                 <hr class="divider my-4" />
                 <br>
-                <canvas id="pricexprod" ></canvas>
+                <canvas id="votxgen" ></canvas>
             </div>
         </section>
+        
+        <!-- Grafica votos negativos x genero-->
+        <section class="page-section bg-primary text-light">
+            <div class="container text-center">
+                <h2 class="mb-4">Votos negativos por género</h2>
 
+                <hr class="divider my-4" />
+                <br>
+                <canvas id="novxgen" ></canvas>
+            </div>
+        </section>
+        
+        <!-- Grafica duracion -->        
+        <section class="page-section bg-dark text-white">
+            <div class="container text-center">
+                <h2 class="mb-4">Promedio duración por género</h2>
 
+                <hr class="divider light my-4" />
+                <br>
+                <canvas id="duracion" ></canvas>
+            </div>
+        </section>
+        
+        <!-- Grafica clasificacion -->        
+        <section class="page-section bg-light">
+            <div class="container text-center">
+                <h2 class="mb-4">Clasificación de películas</h2>
+
+                <hr class="divider light my-4" />
+                <br>
+                <canvas id="clasificacion" ></canvas>
+            </div>
+        </section>
         <!-- Pie de página-->
         <footer class="bg-light py-5">
 
@@ -94,16 +124,17 @@
                 var b = Math.floor(Math.random() * 255);
                 return "rgb(" + r + "," + g + "," + b + ")";
             };
-            var pxc= document.getElementById("exxprod").getContext("2d");
+            //Grafica peliculas por genero
+            var pxg= document.getElementById("pelixgen").getContext("2d");
             var datos = new Array();
             var etiquetas = new Array();
             var coloR = new Array();
-            <c:forEach var="item" items="${ex}">
+            <c:forEach var="item" items="${peligen}">
                 etiquetas.push('<c:out value='${item.nombre}'/>');
                 datos.push('<c:out value='${item.cantidad}'/>'); 
                 coloR.push(dynamicColors());
             </c:forEach>  ;      
-            var myChart  = new Chart(pxc,{
+            var myChart  = new Chart(pxg,{
                 type: 'doughnut',
                 data:{
                     labels: etiquetas,
@@ -114,32 +145,92 @@
                 }             
             }); 
             
-            var prexc= document.getElementById("pricexprod").getContext("2d");
+            var vpxg= document.getElementById("votxgen").getContext("2d");
             var datos1 = new Array();
             var etiquetas1 = new Array();
             var coloR1 = new Array();
-            <c:forEach var="item" items="${pr}">
+            <c:forEach var="item" items="${genV}">
                 etiquetas1.push('<c:out value='${item.nombre}'/>');
                 datos1.push('<c:out value='${item.cantidad}'/>'); 
                 coloR1.push(dynamicColors());
             </c:forEach>  ;      
-            var myChart  = new Chart(prexc,{
-                type: 'bar',
+            var myChart  = new Chart(vpxg,{
+                type: 'doughnut',
                 data:{
                     labels: etiquetas1,
                     datasets:[{
-                        label:'Precio promedio',
+                        label:'Votos positivos',
                         data:datos1,
                         backgroundColor: coloR1
                     }]
                 },
                 options:{
-                 scales:{
-                     yAxes:[{
-                             ticks:{beginAtZero:true}
-                     }]
-                 }   
-                }                   
+                    scales:{
+                        yAxes:[{
+                                ticks:{beginAtZero:true}
+                        }]
+                    }   
+                }               
+            }); 
+            
+            var vnxg= document.getElementById("novxgen").getContext("2d");
+            var datos2 = new Array();
+            var etiquetas2 = new Array();
+            var coloR2 = new Array();
+            <c:forEach var="item" items="${genNV}">
+                etiquetas2.push('<c:out value='${item.nombre}'/>');
+                datos2.push('<c:out value='${item.cantidad}'/>'); 
+                coloR2.push(dynamicColors());
+            </c:forEach>  ;      
+            var myChart  = new Chart(vnxg,{
+                type: 'pie',
+                data:{
+                    labels: etiquetas2,
+                    datasets:[{
+                        data:datos2,
+                        backgroundColor: coloR2
+                    }]
+                }             
+            }); 
+            
+            var duracion= document.getElementById("duration").getContext("2d");
+            var datos3 = new Array();
+            var etiquetas3 = new Array();
+            var coloR3 = new Array();
+            <c:forEach var="item" items="${dura}">
+                etiquetas3.push('<c:out value='${item.nombre}'/>');
+                datos3.push('<c:out value='${item.cantidad}'/>'); 
+                coloR3.push(dynamicColors());
+            </c:forEach>  ;      
+            var myChart  = new Chart(duracion,{
+                type: 'pie',
+                data:{
+                    labels: etiquetas3,
+                    datasets:[{
+                        data:datos3,
+                        backgroundColor: coloR3
+                    }]
+                }             
+            }); 
+            
+            var clasificacion= document.getElementById("clas").getContext("2d");
+            var datos4 = new Array();
+            var etiquetas4 = new Array();
+            var coloR4 = new Array();
+            <c:forEach var="item" items="${peliClas}">
+                etiquetas4.push('<c:out value='${item.nombre}'/>');
+                datos4.push('<c:out value='${item.cantidad}'/>'); 
+                coloR4.push(dynamicColors());
+            </c:forEach>  ;      
+            var myChart  = new Chart(clasificacion,{
+                type: 'bar',
+                data:{
+                    labels: etiquetas4,
+                    datasets:[{
+                        data:datos4,
+                        backgroundColor: coloR4
+                    }]
+                }             
             }); 
         </script>
     </body>
