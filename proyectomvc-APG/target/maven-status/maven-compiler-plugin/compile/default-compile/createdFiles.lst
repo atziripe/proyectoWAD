@@ -11,6 +11,7 @@ com\ipn\mx\modelo\dto\UsuarioDTO.class
 com\ipn\mx\modelo\dao\PeliculaDAO.class
 com\ipn\mx\controlador\usuarioServlet.class
 com\ipn\mx\modelo\dao\GeneroDAO.class
+com\ipn\mx\controlador\utileriasServlet.class
 com\ipn\mx\modelo\entidades\Genero.class
 com\ipn\mx\modelo\dto\PeliculaDTO.class
 com\ipn\mx\controlador\generoServlet.class

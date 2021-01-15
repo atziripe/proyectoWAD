@@ -3,7 +3,7 @@
     Created on : 12 dic. 2020, 21:25:26
     Author     : Atziri Perez
 --%>
-<%@page session='true'%>
+<%--<%@page session='true'%>--%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -40,8 +40,8 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="generoServlet?accion=listaDeGeneros">Generos</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="generoServlet?accion=nuevo">Nueva categoría</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=usuarios">Usuarios</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=actualizar&id=${sessionScope.user.entidad.idUsuario}"><i
-                                    class="fas fa-2x fa-user-edit mb-4"></i>${sessionScope.user.entidad.nombreUsuario}</a></li>
+                        <%--<li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=actualizar&id=${sessionScope.user.entidad.idUsuario}"><i
+                                    class="fas fa-2x fa-user-edit mb-4"></i>${sessionScope.user.entidad.nombreUsuario}</a></li>--%>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="usuarioServlet?accion=salir"><i
                                     class="fas fa-2x fa-sign-out-alt mb-4"></i></a></li>
                     </ul>
@@ -88,7 +88,7 @@
 
                 <hr class="divider light my-4" />
                 <br>
-                <canvas id="duracion" ></canvas>
+                <canvas id="duration" ></canvas>
             </div>
         </section>
         
@@ -99,7 +99,7 @@
 
                 <hr class="divider light my-4" />
                 <br>
-                <canvas id="clasificacion" ></canvas>
+                <canvas id="clas" ></canvas>
             </div>
         </section>
         <!-- Pie de página-->
@@ -129,7 +129,7 @@
             var datos = new Array();
             var etiquetas = new Array();
             var coloR = new Array();
-            <c:forEach var="item" items="${peligen}">
+            <c:forEach var="item" items="${peliGen}">
                 etiquetas.push('<c:out value='${item.nombre}'/>');
                 datos.push('<c:out value='${item.cantidad}'/>'); 
                 coloR.push(dynamicColors());
@@ -225,6 +225,7 @@
             var myChart  = new Chart(clasificacion,{
                 type: 'bar',
                 data:{
+                    label:'Clasificación',
                     labels: etiquetas4,
                     datasets:[{
                         data:datos4,
