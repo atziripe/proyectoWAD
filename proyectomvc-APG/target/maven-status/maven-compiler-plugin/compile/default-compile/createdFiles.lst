@@ -1,10 +1,13 @@
 com\ipn\mx\utilerias\Utilerias.class
 com\ipn\mx\modelo\entidades\Usuario.class
+com\ipn\mx\controlador\web\GeneroMB.class
 com\ipn\mx\utilerias\HibernateUtil.class
+com\ipn\mx\controlador\web\BaseBean.class
 com\ipn\mx\modelo\entidades\Pelicula.class
 com\ipn\mx\controlador\peliculaServlet.class
 com\ipn\mx\modelo\dao\GraficaDAO.class
 com\ipn\mx\modelo\dao\UsuarioDAO.class
+com\ipn\mx\controlador\web\UsuarioMB.class
 com\ipn\mx\modelo\dto\GeneroDTO.class
 com\ipn\mx\modelo\dto\GraficaDTO.class
 com\ipn\mx\modelo\dto\UsuarioDTO.class
