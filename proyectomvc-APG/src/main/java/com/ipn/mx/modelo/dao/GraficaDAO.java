@@ -91,6 +91,28 @@ public class GraficaDAO {
             for (Object[] datos : (List<Object[]>) q.list()) {
                 GraficaDTO dto = new GraficaDTO();
                 dto.setNombre(String.valueOf(datos[0]));
+                dto.setCantidad((int) Float.parseFloat(datos[1].toString()));
+                lista.add(dto);
+            }
+            transaction.commit();
+        } catch (HibernateException he) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+        }
+        return lista;
+    }
+    
+    public List graficaPelixClasificacion() {
+        Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = sesion.getTransaction();
+        List lista = new ArrayList();
+        try {
+            transaction.begin();
+            Query q = sesion.createQuery("select p.clasificacion as Clasificacion, count(*)  from Pelicula p group by clasificacion ");
+            for (Object[] datos : (List<Object[]>) q.list()) {
+                GraficaDTO dto = new GraficaDTO();
+                dto.setNombre(String.valueOf(datos[0]));
                 dto.setCantidad(Integer.parseInt(datos[1].toString()));
                 lista.add(dto);
             }
@@ -116,8 +138,11 @@ public class GraficaDAO {
         res = dao.graficaGenNoVotado();
         System.out.println(res);
         
-        //res = dao.graficaDuracion();
-        //System.out.println(res);
+        res = dao.graficaDuracion();
+        System.out.println(res);
+
+        res = dao.graficaPelixClasificacion();
+        System.out.println(res);
         
     }
 
