@@ -43,7 +43,51 @@ public class GraficaDAO {
         List lista = new ArrayList();
         try {
             transaction.begin();
-            Query q = sesion.createQuery("select g.nombreGenero as Genero, count (*) as Peliculas from Pelicula p, Genero g where g.idGenero = p.idGenero group by g.idGenero");
+            Query q = sesion.createQuery("select g.nombreGenero as Genero, sum(p.votosPositivos) as Votos from Pelicula p, Genero g where g.idGenero = p.idGenero group by g.idGenero");
+            for (Object[] datos :(List<Object[]>) q.list()) {
+                GraficaDTO dto = new GraficaDTO();
+                dto.setNombre(String.valueOf(datos[0]));
+                dto.setCantidad(Integer.parseInt(datos[1].toString()));
+                lista.add(dto);
+            }
+            transaction.commit();
+        } catch (HibernateException he) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+        }
+        return lista;
+    }
+    
+    public List graficaGenNoVotado() {
+        Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = sesion.getTransaction();
+        List lista = new ArrayList();
+        try {
+            transaction.begin();
+            Query q = sesion.createQuery("select g.nombreGenero as Genero, sum(p.votosNegativos) as Votos from Pelicula p, Genero g where g.idGenero = p.idGenero group by g.idGenero");
+            for (Object[] datos :(List<Object[]>) q.list()) {
+                GraficaDTO dto = new GraficaDTO();
+                dto.setNombre(String.valueOf(datos[0]));
+                dto.setCantidad(Integer.parseInt(datos[1].toString()));
+                lista.add(dto);
+            }
+            transaction.commit();
+        } catch (HibernateException he) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+        }
+        return lista;
+    }
+    
+    public List graficaDuracion() {
+        Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = sesion.getTransaction();
+        List lista = new ArrayList();
+        try {
+            transaction.begin();
+            Query q = sesion.createQuery("select g.nombreGenero as Genero, avg(p.duracion) as Duracion from Pelicula p, Genero g where g.idGenero = p.idGenero group by g.idGenero");
             for (Object[] datos :(List<Object[]>) q.list()) {
                 GraficaDTO dto = new GraficaDTO();
                 dto.setNombre(String.valueOf(datos[0]));
@@ -63,7 +107,7 @@ public class GraficaDAO {
         GraficaDAO dao = new GraficaDAO();
         GraficaDTO dto = new GraficaDTO();
 
-        List res = dao.graficaPeliXGen();
+        List res = dao.graficaDuracion();
         System.out.println(res);
     }
 
