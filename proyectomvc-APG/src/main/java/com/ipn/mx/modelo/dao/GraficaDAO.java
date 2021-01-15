@@ -21,18 +21,8 @@ public class GraficaDAO {
         List lista = new ArrayList();
         try {
             transaction.begin();
-<<<<<<< HEAD
-            //select * from Usuario u order by u.idUsuario;
-            //              Usuario u
-            //select nombreGenero as Genero, count (*) as Peliculas from Pelicula p, Genero g where g.idGenero = p.idGenero group by g.idGenero
-            //Query q = sesion.createQuery("from Pelicula peli where idGenero = "+ dto.getEntidad().getIdGenero());
             Query q = sesion.createQuery("select g.nombreGenero as Genero, count (*) as Peliculas from Pelicula p, Genero g where g.idGenero = p.idGenero group by g.idGenero");
-            for (Genero gen : (List<Genero>) q.list()) {
-                GeneroDTO dto = new GeneroDTO();
-                dto.setEntidad(gen);
-=======
-            Query q = sesion.createQuery("select g.nombreGenero as Genero, count (*) as Peliculas from Pelicula p, Genero g where g.idGenero = p.idGenero group by g.idGenero");
-            for (Object[] datos :(List<Object[]>) q.list()) {
+            for (Object[] datos : (List<Object[]>) q.list()) {
                 GraficaDTO dto = new GraficaDTO();
                 dto.setNombre(String.valueOf(datos[0]));
                 dto.setCantidad(Integer.parseInt(datos[1].toString()));
@@ -54,7 +44,7 @@ public class GraficaDAO {
         try {
             transaction.begin();
             Query q = sesion.createQuery("select g.nombreGenero as Genero, sum(p.votosPositivos) as Votos from Pelicula p, Genero g where g.idGenero = p.idGenero group by g.idGenero");
-            for (Object[] datos :(List<Object[]>) q.list()) {
+            for (Object[] datos : (List<Object[]>) q.list()) {
                 GraficaDTO dto = new GraficaDTO();
                 dto.setNombre(String.valueOf(datos[0]));
                 dto.setCantidad(Integer.parseInt(datos[1].toString()));
@@ -68,7 +58,7 @@ public class GraficaDAO {
         }
         return lista;
     }
-    
+
     public List graficaGenNoVotado() {
         Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction = sesion.getTransaction();
@@ -76,7 +66,7 @@ public class GraficaDAO {
         try {
             transaction.begin();
             Query q = sesion.createQuery("select g.nombreGenero as Genero, sum(p.votosNegativos) as Votos from Pelicula p, Genero g where g.idGenero = p.idGenero group by g.idGenero");
-            for (Object[] datos :(List<Object[]>) q.list()) {
+            for (Object[] datos : (List<Object[]>) q.list()) {
                 GraficaDTO dto = new GraficaDTO();
                 dto.setNombre(String.valueOf(datos[0]));
                 dto.setCantidad(Integer.parseInt(datos[1].toString()));
@@ -90,7 +80,7 @@ public class GraficaDAO {
         }
         return lista;
     }
-    
+
     public List graficaDuracion() {
         Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction = sesion.getTransaction();
@@ -98,11 +88,10 @@ public class GraficaDAO {
         try {
             transaction.begin();
             Query q = sesion.createQuery("select g.nombreGenero as Genero, avg(p.duracion) as Duracion from Pelicula p, Genero g where g.idGenero = p.idGenero group by g.idGenero");
-            for (Object[] datos :(List<Object[]>) q.list()) {
+            for (Object[] datos : (List<Object[]>) q.list()) {
                 GraficaDTO dto = new GraficaDTO();
                 dto.setNombre(String.valueOf(datos[0]));
                 dto.setCantidad(Integer.parseInt(datos[1].toString()));
->>>>>>> a90da1dcb2c0c812f982a3212644cbd0843d53ec
                 lista.add(dto);
             }
             transaction.commit();
@@ -118,8 +107,18 @@ public class GraficaDAO {
         GraficaDAO dao = new GraficaDAO();
         GraficaDTO dto = new GraficaDTO();
 
-        List res = dao.graficaDuracion();
+        List res = dao.graficaPeliXGen();
         System.out.println(res);
+        
+        res = dao.graficaGenVotado();
+        System.out.println(res);
+        
+        res = dao.graficaGenNoVotado();
+        System.out.println(res);
+        
+        //res = dao.graficaDuracion();
+        //System.out.println(res);
+        
     }
 
 }
