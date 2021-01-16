@@ -4,21 +4,20 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <meta charset="utf-8" />
+       <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-        <title>Lista de categorias</title>
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Lista de Géneros</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
-              rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
         <!-- Third party plugin CSS-->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
-              rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     </h:head>
@@ -51,25 +50,34 @@
 
                 <hr class="divider my-4" />
                 <br></br>
-                    <h:panelGrid>
-                        <f:view>
-                            <h:form id="frmGenero">
-                                <h:dataTable
-                                    var="dto"
-                                    value="#{GeneroMB.listaGeneros}">
-                                    <h:column>
-                                        <f:facet name="header">Clave Genero</f:facet>
-                                        <f:facet name="header">Nombre Genero</f:facet>
-                                        <f:facet name="header">Descripcion Genero</f:facet>
-                                        <f:facet name="header">Editar</f:facet>
-                                        <f:facet name="header">Eliminar</f:facet>
-
-                                        <h:outputText value="hola"/>
-                                    </h:column>
-                                </h:dataTable>
-                            </h:form>
-                        </f:view>
-                    </h:panelGrid>    
+                <h:panelGrid>
+                    <f:view>
+                        <h:form id="frmGenero">
+                            <h:dataTable
+                                var="dto"
+                                value="#{GeneroMB.listaGeneros}">
+                                <h:column>
+                                    <f:facet name="header">Clave Genero</f:facet>
+                                    <h:outputText value="${dto.entidad.idGenero}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Nombre Genero</f:facet>
+                                    <h:outputText value="${dto.entidad.nombreGenero}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Descripcion Genero</f:facet>
+                                    <h:outputText value="${dto.entidad.descripcionGenero}"/>                                   
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Editar</f:facet>                                  
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Eliminar</f:facet>
+                                </h:column>
+                            </h:dataTable>
+                        </h:form>
+                    </f:view>
+                </h:panelGrid>    
             </div>
         </section>
 
@@ -89,4 +97,3 @@
         <script src="js/scripts.js"></script>
     </h:body>
 </html>
-
