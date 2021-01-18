@@ -90,7 +90,7 @@ public class GeneroMB extends BaseBean implements Serializable{
         return prepareIndex();
     }
     
-    public void seleccionarCateoria(ActionEvent event){
+    public void seleccionarCategoria(ActionEvent event){
         String claveSel = (String) 
                 FacesContext.getCurrentInstance().
                         getExternalContext().
